@@ -24,12 +24,4 @@
     wget
   ];
   environment.variables.EDITOR = "vim";
-  
-  # Sudo
-  security.sudo.extraRules = [
-    {
-      groups = [ "wheel" ];
-      commands = [ { command = "ALL"; options = [ "NOPASSWD" ]; } ];
-    }
-  ];
 }
