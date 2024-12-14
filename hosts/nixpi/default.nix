@@ -8,30 +8,16 @@ let
   interface = "wlan0";
   hostname = "nixpi";
 in {
-
-  # Nix Configuration
+  # Imports
   imports = [
+    ../common.nix
     ./hardware-configuration.nix
   ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Userspace Configuration
+  # Host specific packages
   environment.systemPackages = with pkgs; [
-    git # Must init git first for Flakes dependency cloning
-    vim
-    wget
     shellcheck
   ];
-  environment.variables.EDITOR = "vim";
-
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = false;
-    };
-  };
 
   users = {
     mutableUsers = false;
@@ -42,14 +28,8 @@ in {
     };
   };
 
-  security.sudo.extraRules = [
-    {
-      groups = [ "wheel" ];
-      commands = [ { command = "ALL"; options = [ "NOPASSWD" ]; } ];
-    }
-  ];
 
-  # System Configuration
+  # Host system configuration
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
     initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];

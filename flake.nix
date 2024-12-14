@@ -1,5 +1,5 @@
 {
-  description = "A simple NixOS flake";
+  description = "AidanHouck's NixOS Flake Config";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
@@ -9,8 +9,7 @@
     nixosConfigurations.nixpi = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       modules = [
-        # Import the previous configuration.nix
-        ./configuration.nix
+        ./hosts/nixpi
       ];
     };
   };
