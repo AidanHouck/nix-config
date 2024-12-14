@@ -1,10 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 let
   user = "houck";
   password = "FooBar";
-  SSID = "FooBar";
-  SSIDpassword = "FooBar";
   interface = "wlan0";
   hostname = "nixpi";
 in {
@@ -14,7 +12,7 @@ in {
     ./hardware-configuration.nix
   ];
 
-  # Host specific packages
+  # Host specific package
   environment.systemPackages = with pkgs; [
     shellcheck
   ];
@@ -47,11 +45,17 @@ in {
     };
   };
 
+  # Setup wireless using SSID/PSK from SOPS file
   networking = {
     hostName = hostname;
     wireless = {
       enable = true;
-      networks."${SSID}".psk = SSIDpassword;
+      environmentFile = config.sops.secrets."wireless.env".path;
+      networks = {
+        "@home_uuid@" = {
+          psk = "@home_psk@";
+        };
+      };
       interfaces = [ interface ];
     };
   };

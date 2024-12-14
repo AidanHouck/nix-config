@@ -1,8 +1,15 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
-let
-  foo = "bar";
-in {
+{
+  # Imports
+  imports = [
+    inputs.sops-nix.nixosModules.sops
+  ];
+
+  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/houck/.config/sops/age/keys.txt";
+  sops.secrets."wireless.env" = { };
 
   # Enable Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
