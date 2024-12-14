@@ -4,6 +4,7 @@
   # Imports
   imports = [
     inputs.sops-nix.nixosModules.sops
+    ./../modules
   ];
 
   sops.defaultSopsFile = ../secrets/secrets.yaml;
@@ -23,15 +24,6 @@
     wget
   ];
   environment.variables.EDITOR = "vim";
-  
-  # SSH
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = false;
-    };
-  };
   
   # Sudo
   security.sudo.extraRules = [
