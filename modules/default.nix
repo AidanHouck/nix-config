@@ -2,7 +2,7 @@
 {
   imports = [
     ./system
-    #./cli
+    ./cli
     #./gui
   ];
 
