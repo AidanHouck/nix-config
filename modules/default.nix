@@ -12,10 +12,4 @@
       default = { };
     };
   };
-
-  #config = {
-  #  ssh.enable = lib.mkDefault true;
-  #  sudo.enable = lib.mkDefault true;
-  #  wlan.enable = lib.mkDefault false;
-  #};
 }
