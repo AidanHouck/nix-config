@@ -1,8 +1,9 @@
 { pkgs, lib, config, ... }:
 {
   options = {
-    system.ssh.enable = lib.mkEnableOption {
+    system.ssh.enable = lib.mkOption {
       default = true;
+      type = lib.types.bool;
       description = "enables inbound ssh";
     };
   };

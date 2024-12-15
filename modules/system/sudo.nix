@@ -1,8 +1,9 @@
 { pkgs, lib, config, ... }:
 {
   options = {
-    system.sudo.enable = lib.mkEnableOption {
+    system.sudo.enable = lib.mkOption {
       default = true;
+      type = lib.types.bool;
       description = "enables passwordless sudo";
     };
   };

@@ -1,8 +1,9 @@
 { pkgs, lib, config, ... }:
 {
   options = {
-    system.wlan.enable = lib.mkEnableOption {
-      default = true;
+    system.wlan.enable = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
       description = "enables wlan connection";
     };
   };
