@@ -22,6 +22,7 @@
     gh # GitHub CLI
     vim
     wget
+    tree
   ];
   environment.variables.EDITOR = "vim";
 }
