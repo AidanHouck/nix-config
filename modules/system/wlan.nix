@@ -1,10 +1,13 @@
 { pkgs, lib, config, ... }:
 {
   options = {
-    wlan.enable = lib.mkEnableOption "enables wlan";
+    system.wlan.enable = lib.mkEnableOption {
+      default = true;
+      description = "enables wlan connection";
+    };
   };
 
-  config = lib.mkIf config.wlan.enable {
+  config = lib.mkIf config.system.wlan.enable {
     # Setup wireless using SSID/PSK from SOPS file
     networking = {
       hostName = config.variables.hostname;

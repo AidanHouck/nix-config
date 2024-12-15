@@ -1,10 +1,13 @@
 { pkgs, lib, config, ... }:
 {
   options = {
-    ssh.enable = lib.mkEnableOption "enables ssh";
+    system.ssh.enable = lib.mkEnableOption {
+      default = true;
+      description = "enables inbound ssh";
+    };
   };
 
-  config = lib.mkIf config.ssh.enable {
+  config = lib.mkIf config.system.ssh.enable {
     services.openssh = {
       enable = true;
       settings = {

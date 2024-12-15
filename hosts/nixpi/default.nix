@@ -13,7 +13,7 @@ in {
   ];
 
   config = {
-    wlan.enable = true;
+    system.wlan.enable = true;
 
     variables.hostname = hostname;
     variables.interface = interface;
