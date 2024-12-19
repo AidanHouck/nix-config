@@ -19,6 +19,7 @@
   # Common software
   environment.systemPackages = with pkgs; [
     git # Must init git first for Flakes dependency cloning
+    sops # Nix secret management
     gh # GitHub CLI
     vim
     wget
