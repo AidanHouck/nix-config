@@ -4,7 +4,7 @@
   # Imports
   imports = [
     inputs.sops-nix.nixosModules.sops
-    ./../modules
+    ./../modules/nixos
   ];
 
   sops.defaultSopsFile = ../secrets/secrets.yaml;
