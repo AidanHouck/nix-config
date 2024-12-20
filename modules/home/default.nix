@@ -1,6 +1,10 @@
-{ config, pkgs, ... }:
+{ inputs, lib, config, pkgs, ... }:
 
 {
+  imports = [
+    # TODO
+  ];
+
   home.username = "houck";
   home.homeDirectory = "/home/houck";
 
@@ -8,6 +12,6 @@
     fzf
   ];
 
-  home.stateVersion = "24.11";
   programs.home-manager.enable = true;
+  home.stateVersion = "24.11";
 }

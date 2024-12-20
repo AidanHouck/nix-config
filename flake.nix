@@ -18,29 +18,24 @@
   outputs = inputs@{
     self,
     nixpkgs,
-    #nixpkgs-stable,
     home-manager,
     ...
-  }: {
+  }: let 
+    inherit (self) outputs;
+  in {
     nixosConfigurations = {
       nixpi = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs;};
         system = "aarch64-linux";
-
-        # Passed downstream into modules
-        specialArgs = {
-          inherit inputs;
-          #pkgs-stable = import nixpkgs-stable { };
-        };
-
-        modules = [
-          ./hosts/nixpi
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.houck = import ./modules/home;
-          }
-        ];
+        modules = [ ./hosts/nixpi ];
+      };
+    };
+    
+    homeConfigurations = {
+      "houck@nixpi" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-linux;
+        extraSpecialArgs = { inherit inputs outputs;};
+        modules = [ ./modules/home ];
       };
     };
   };

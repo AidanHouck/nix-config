@@ -20,6 +20,7 @@
     git # Must init git first for Flakes dependency cloning
     sops # Nix secret management
     gh # GitHub CLI
+    home-manager
     vim
     wget
     tree
