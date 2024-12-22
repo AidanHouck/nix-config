@@ -4,6 +4,7 @@
     ./ssh.nix
     ./sudo.nix
     ./wlan.nix
+    ./users.nix
   ];
 
   options = {
@@ -17,5 +18,6 @@
     system.ssh.enable = lib.mkDefault false;
     system.sudo.enable = lib.mkDefault false;
     system.wlan.enable = lib.mkDefault false;
+    system.users.enable = lib.mkDefault false;
   };
 }

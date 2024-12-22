@@ -1,8 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 
 let
-  user = "houck";
-  password = "FooBar";
   interface = "wlan0";
   hostname = "nixpi";
 in {
@@ -22,15 +20,6 @@ in {
     environment.systemPackages = with pkgs; [
       shellcheck
     ];
-
-    users = {
-      mutableUsers = false;
-      users."${user}" = {
-        isNormalUser = true;
-        password = password;
-        extraGroups = [ "wheel" ];
-      };
-    };
 
     # Pi kernel config
     boot = {
