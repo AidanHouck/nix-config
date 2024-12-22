@@ -2,7 +2,7 @@
 
 {
   imports = [
-    # TODO
+    ./git.nix
   ];
 
   home.username = "houck";
