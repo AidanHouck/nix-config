@@ -1,7 +1,10 @@
 keys:
-  - &test age184zg0rfghppepg2lkev6hzmauvtz6wnnftkt4uwpdgm8rukm6y7szj7qff
+  - &nixpi age184zg0rfghppepg2lkev6hzmauvtz6wnnftkt4uwpdgm8rukm6y7szj7qff
+  - &nixos-wsl-home age1c6jp48xjdjrsfqmr9afdr45fr7vlvqr9kyqztefjvhsn6jtg0vzsc28att
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
       - age:
-        - *test
+        - *nixpi
+        - *nixos-wsl-home
+
