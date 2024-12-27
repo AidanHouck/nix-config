@@ -11,9 +11,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # NixOS for WSL
-    nixpkgs-wsl-oldstable.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs-wsl-oldstable";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
     # SOPS for secrets
     sops-nix.url = "github:Mic92/sops-nix";
@@ -25,7 +24,6 @@
     nixpkgs,
     home-manager,
     nixos-wsl,
-    nixpkgs-wsl-oldstable,
     ...
   }: let 
     inherit (self) outputs;
@@ -37,13 +35,12 @@
         modules = [ ./hosts/nixpi ];
       };
     
-      nixos-wsl-home = nixpkgs-wsl-oldstable.lib.nixosSystem {
+      nixos-wsl-home = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs outputs;};
         system = "x86_64-linux";
         modules = [
           nixos-wsl.nixosModules.default
           {
-            system.stateVersion = "24.05";
             wsl.enable = true;
           }
           ./hosts/nixos-wsl-home

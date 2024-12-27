@@ -59,7 +59,7 @@
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "nixpkgs-wsl-oldstable"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -93,28 +93,11 @@
         "type": "github"
       }
     },
-    "nixpkgs-wsl-oldstable": {
-      "locked": {
-        "lastModified": 1735066050,
-        "narHash": "sha256-vCBl6vYGi0QB11TMqdndLa7/UzxvuJUvKazlEnMTEX4=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "17fcc7929706c2bd08db2b785edbb23a66b2f681",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-24.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-wsl-oldstable": "nixpkgs-wsl-oldstable",
         "sops-nix": "sops-nix"
       }
     },
