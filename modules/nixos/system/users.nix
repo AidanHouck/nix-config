@@ -23,6 +23,15 @@
         isNormalUser = true;
         hashedPasswordFile = config.sops.secrets."${config.system.users.username}_pass_hash".path;
         extraGroups = [ "wheel" ]; # wheel for sudo
+
+        # Fetch allowed public keys from GitHub
+        # Ref: https://discourse.nixos.org/t/fetching-ssh-public-keys/12076/3
+        openssh.authorizedKeys.keys = let
+          authorizedKeys = pkgs.fetchurl {
+            url = "https://github.com/AidanHouck.keys";
+            sha256 = "sha256-UkVIOEUmMv+WkgVzAiwXUOy0sxUkG27NvY1XPUy08KU=";
+          };
+        in pkgs.lib.splitString "\n" (builtins.readFile authorizedKeys);
       };
     };
   };
