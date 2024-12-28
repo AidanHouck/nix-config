@@ -20,7 +20,7 @@ home-manager switch
 
 1. Set temp Hostname/Username
 ```bash
-udo hostname <NEW HOSTNAME>
+sudo hostname <NEW HOSTNAME>
 sudo useradd -g users -G wheel houck
 sudo passwd houck
 su houck
