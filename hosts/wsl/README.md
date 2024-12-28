@@ -45,5 +45,5 @@ sudo nixos-rebuild switch
 ```
 
 4. Final NixOS setup
-Follow base [README.md](README.md#new-machine-setup) setup instructions
+Follow base [README.md](/README.md#new-machine-setup) setup instructions
 
