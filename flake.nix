@@ -35,7 +35,7 @@
         modules = [ ./hosts/nixpi ];
       };
     
-      nixos-wsl-home = nixpkgs.lib.nixosSystem {
+      wsl-home = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs outputs;};
         system = "x86_64-linux";
         modules = [
@@ -43,7 +43,7 @@
           {
             wsl.enable = true;
           }
-          ./hosts/nixos-wsl-home
+          ./hosts/wsl/wsl-home
         ];
       };
     };
@@ -55,7 +55,7 @@
         modules = [ ./modules/home ];
       };
 
-      "houck@nixos-wsl-home" = home-manager.lib.homeManagerConfiguration {
+      "houck@wsl-home" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs outputs;};
         modules = [ ./modules/home ];

@@ -1,7 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 
 let
-  hostname = "nixos-wsl-home";
+  hostname = "wsl-home";
 in {
   # Imports
   imports = [
@@ -10,16 +10,12 @@ in {
 
   config = {
     variables.hostname = hostname;
+    wsl.wslConf.network.hostname = hostname;
 
     # Host specific packages
     environment.systemPackages = with pkgs; [
       shellcheck
     ];
-
-    # WSL specific config
-    wsl.enable = true;
-    wsl.wslConf.network.hostname = hostname;
-    wsl.defaultUser = config.system.users.username;
 
     system.stateVersion = "24.05";
   };
