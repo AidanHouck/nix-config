@@ -17,6 +17,10 @@
     # SOPS for secrets
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Alejandra .nix formatting
+    alejandra.url = "github:kamadorueda/alejandra/3.1.0";
+    alejandra.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{
@@ -24,6 +28,7 @@
     nixpkgs,
     home-manager,
     nixos-wsl,
+    alejandra,
     ...
   }: let 
     inherit (self) outputs;
@@ -42,6 +47,9 @@
           nixos-wsl.nixosModules.default
           {
             wsl.enable = true;
+          }
+          {
+            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
           ./hosts/wsl/wsl-home
         ];
