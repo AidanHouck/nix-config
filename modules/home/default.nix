@@ -1,6 +1,10 @@
-{ inputs, lib, config, pkgs, ... }:
-
 {
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
     ./cli

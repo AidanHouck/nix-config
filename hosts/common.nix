@@ -1,6 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
   # Imports
   imports = [
     inputs.sops-nix.nixosModules.sops
@@ -12,8 +16,8 @@
   sops.age.keyFile = "/home/houck/.config/sops/age/keys.txt";
 
   # Enable Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
   # Common software
   environment.systemPackages = with pkgs; [
     git # Must init git first for Flakes dependency cloning

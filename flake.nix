@@ -23,25 +23,25 @@
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{
+  outputs = inputs @ {
     self,
     nixpkgs,
     home-manager,
     nixos-wsl,
     alejandra,
     ...
-  }: let 
+  }: let
     inherit (self) outputs;
   in {
     nixosConfigurations = {
       nixpi = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs;};
+        specialArgs = {inherit inputs outputs;};
         system = "aarch64-linux";
-        modules = [ ./hosts/nixpi ];
+        modules = [./hosts/nixpi];
       };
-    
+
       wsl-home = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs;};
+        specialArgs = {inherit inputs outputs;};
         system = "x86_64-linux";
         modules = [
           nixos-wsl.nixosModules.default
@@ -55,18 +55,18 @@
         ];
       };
     };
-    
+
     homeConfigurations = {
       "houck@nixpi" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-linux;
-        extraSpecialArgs = { inherit inputs outputs;};
-        modules = [ ./modules/home ];
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [./modules/home];
       };
 
       "houck@wsl-home" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = { inherit inputs outputs;};
-        modules = [ ./modules/home ];
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [./modules/home];
       };
     };
   };

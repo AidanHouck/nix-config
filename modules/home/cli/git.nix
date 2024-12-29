@@ -1,6 +1,10 @@
-{ inputs, lib, config, pkgs, ... }:
-
 {
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   options = {
     home.cli.git.enable = lib.mkOption {
       default = true;
@@ -24,6 +28,5 @@
     sops.secrets."gh-hosts.yml" = {
       path = "${config.home.homeDirectory}/.config/gh/hosts.yml";
     };
-
   };
 }

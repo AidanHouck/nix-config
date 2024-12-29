@@ -1,6 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: let
   hostname = "wsl-home";
 in {
   # Imports

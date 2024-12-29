@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }:
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     system.sudo.enable = lib.mkOption {
       default = true;
@@ -11,8 +15,13 @@
   config = lib.mkIf config.system.sudo.enable {
     security.sudo.extraRules = [
       {
-        groups = [ "wheel" ];
-        commands = [ { command = "ALL"; options = [ "NOPASSWD" ]; } ];
+        groups = ["wheel"];
+        commands = [
+          {
+            command = "ALL";
+            options = ["NOPASSWD"];
+          }
+        ];
       }
     ];
   };

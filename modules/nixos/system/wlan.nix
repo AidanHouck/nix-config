@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }:
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     system.wlan.enable = lib.mkOption {
       default = false;
@@ -22,7 +26,7 @@
       wireless = {
         enable = true;
         allowAuxiliaryImperativeNetworks = true; # Read /etc/wpa_supplicant.conf
-        interfaces = [ config.variables.interface ];
+        interfaces = [config.variables.interface];
       };
     };
   };

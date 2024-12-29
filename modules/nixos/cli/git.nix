@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ... }:
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     cli.git.enable = lib.mkOption {
       default = true;
@@ -10,7 +14,7 @@
 
   config = lib.mkIf config.cli.git.enable {
     environment.systemPackages = with pkgs; [
-      git 
+      git
     ];
   };
 }

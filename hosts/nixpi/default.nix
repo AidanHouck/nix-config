@@ -1,6 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: let
   interface = "wlan0";
   hostname = "nixpi";
 in {
@@ -24,7 +28,7 @@ in {
     # Pi kernel config
     boot = {
       kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
-      initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
+      initrd.availableKernelModules = ["xhci_pci" "usbhid" "usb_storage"];
       loader = {
         grub.enable = false;
         generic-extlinux-compatible.enable = true;
@@ -36,7 +40,7 @@ in {
       "/" = {
         device = lib.mkForce "/dev/disk/by-label/NIXOS_SD"; #Override hardware-configuration.nix
         fsType = "ext4";
-        options = [ "noatime" ];
+        options = ["noatime"];
       };
     };
 
