@@ -6,15 +6,7 @@ TODO: tree
 
 ## Usage
 
-To rebuild the system:
-```
-sudo nixos-rebuild switch
-```
-
-To rebuild `home-manager`:
-```
-home-manager switch
-```
+A [Justfile](https://github.com/casey/just) is provided for ease of day-to-day usage. List all available commands with `just`.
 
 ## New Machine Setup
 

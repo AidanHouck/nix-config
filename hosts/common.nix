@@ -24,6 +24,7 @@
     sops # Nix secret management
     gh # GitHub CLI
     home-manager
+    just
   ];
 
   boot.loader.systemd-boot.configurationLimit = 10;
