@@ -20,7 +20,6 @@
   # Packages not defined explicitly in subdir modules
   home.packages = with pkgs; [
     fzf
-    fastfetch
     tree
     wget
   ];

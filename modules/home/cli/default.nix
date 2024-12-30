@@ -8,6 +8,7 @@
     ./git.nix
     ./vim.nix
     ./bash.nix
+    ./fastfetch.nix
   ];
 
   options = {
