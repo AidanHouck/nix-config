@@ -22,17 +22,17 @@ su houck
 ```bash
 sh-keygen -t ed25519
 cat ~/.ssh/id_ed25519.pub
-    # add to: https://github.com/settings/keys
+# add to: https://github.com/settings/keys
 
 mkdir -p ~/.config/sops/age
 nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt"
 nix-shell -p ssh-to-age --run "ssh-to-age < ~/.ssh/id_ed25519.pub"
-    # use this output in next step
+# use this output in next step
 
 
 # On an already trusted machine:
 vim .sops.yaml
-    # add new machine age pubkey
+# add new machine age pubkey
 sops updatekeys secrets/secrets.yaml
 git commit .
 git push
@@ -43,6 +43,8 @@ git push
 nix-shell -p git vim
 git clone https://github.com/AidanHouck/nix-config ~/src/nix-config
 mkdir -p ~/.config/home-manager
+sudo mv /etc/nixos/flake.nix /etc/nixos/flake.nix.bak
+sudo mv ~/.config/home-manager/flake.nix ~/.config/home-manager/flake.nix.bak
 sudo ln -s ~/src/nix-config/flake.nix /etc/nixos/flake.nix
 sudo ln -s ~/src/nix-config/flake.nix ~/.config/home-manager/flake.nix
 ```
@@ -51,9 +53,9 @@ sudo ln -s ~/src/nix-config/flake.nix ~/.config/home-manager/flake.nix
 ```bash
 mkdir hosts/<hostname>
 cp hosts/<template>/default.nix hosts/<hostname>/default.nix
-    # Make any needed changes
+# Make any needed changes
 vim flake.nix
-    # Add new host and home-manager profiles
+# Add new host and home-manager profiles
 
 # Generate new hardware-configuration.nix if needed
 nixos-generate-config
@@ -67,13 +69,18 @@ sudo nixos-rebuild build
 
 # If succeeded
 rm result
+
+# If the has fails this is because of the newly added
+# GitHub SSH keys changing the sha256 hash. Update
+# the expected hash and rebuild
+vim modules/nixos/system/users.nix
 ```
 
 6. Build and switch
 ```bash
 sudo nixos-rebuild switch
 home-manager switch
-    # On WSL do `wsl --shutdown` to get SOPS to run
+# On WSL do `wsl --shutdown` to get SOPS to run
 ```
 
 7. Upstream any hardware or config changes
