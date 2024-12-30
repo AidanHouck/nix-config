@@ -4,7 +4,10 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  bashrcPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/.bashrc";
+  bash_aliasesPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/.bash_aliases";
+in {
   options = {
     home.cli.bash.enable = lib.mkOption {
       default = true;
@@ -20,10 +23,10 @@
 
     home.file = {
       ".bashrc" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/src/nix-config/modules/home/cli/.bashrc";
+        source = config.lib.file.mkOutOfStoreSymlink bashrcPath;
       };
       ".bash_aliases" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/src/nix-config/modules/home/cli/.bash_aliases";
+        source = config.lib.file.mkOutOfStoreSymlink bash_aliasesPath;
       };
     };
   };

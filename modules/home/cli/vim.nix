@@ -4,7 +4,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  vimrcPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/.vimrc";
+in {
   options = {
     home.cli.vim.enable = lib.mkOption {
       default = true;
@@ -20,7 +22,7 @@
 
     home.file = {
       ".vimrc" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/src/nix-config/modules/home/cli/.vimrc";
+        source = config.lib.file.mkOutOfStoreSymlink vimrcPath;
       };
     };
   };
