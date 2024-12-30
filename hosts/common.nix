@@ -25,7 +25,9 @@
     gh # GitHub CLI
     home-manager
     just
+    vim
   ];
+  environment.variables.EDITOR = "vim";
 
   boot.loader.systemd-boot.configurationLimit = 10;
   nix.gc = {
