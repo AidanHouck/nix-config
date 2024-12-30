@@ -51,6 +51,11 @@ gc:
 list:
 	sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
 
+# Print nix store storage usage
+[group('nix sys')]
+store:
+	du -hd 0 /nix/store
+
 # Switch to generation <N>
 [positional-arguments]
 [group('nix sys')]
