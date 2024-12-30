@@ -15,6 +15,8 @@
   home.username = "houck";
   home.homeDirectory = "/home/houck";
 
+  news.display = "silent";
+
   sops.defaultSopsFile = ./../../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/houck/.config/sops/age/keys.txt";
