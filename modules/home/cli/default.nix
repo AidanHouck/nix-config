@@ -6,6 +6,8 @@
 }: {
   imports = [
     ./git.nix
+    ./vim.nix
+    ./bash.nix
   ];
 
   options = {
