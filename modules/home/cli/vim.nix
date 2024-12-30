@@ -19,7 +19,7 @@ in {
     programs.vim = {
       enable = true;
       extraConfig = ''
-        source ~/.vimrc # Nix will only use its' auto-generated .vimrc by default.
+        source ~/.vimrc " Nix will only use its' auto-generated .vimrc by default.
       '';
       plugins = with pkgs.vimPlugins; [
         vim-just
