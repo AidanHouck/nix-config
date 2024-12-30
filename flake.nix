@@ -21,6 +21,10 @@
     # Alejandra .nix formatting
     alejandra.url = "github:kamadorueda/alejandra/3.1.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Git Hooks for pre-commit formatting
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+    pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
@@ -32,7 +36,18 @@
     ...
   }: let
     inherit (self) outputs;
+    usedSystems = ["aarch64-linux" "x86_64-linux"];
+    forAllSystems = nixpkgs.lib.genAttrs usedSystems;
   in {
+    checks = forAllSystems (system: {
+      pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+        src = ./.;
+        hooks = {
+          alejandra.enable = true;
+        };
+      };
+    });
+
     nixosConfigurations = {
       nixpi = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
