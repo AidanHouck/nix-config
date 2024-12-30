@@ -52,3 +52,11 @@ list:
 [group('nix sys')]
 @switch n:
   sudo nix-env --switch-generation $1 --profile /nix/var/nix/profiles/system
+
+# Delete generation <N>
+[positional-arguments]
+[group('nix sys')]
+@delete n:
+  sudo nix-env --delete-generations $1 --profile /nix/var/nix/profiles/system
+
+
