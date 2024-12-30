@@ -1,7 +1,7 @@
 # Like Make, but It Just Works(tm)
 
 default:
-  @just --list
+	@just --list
 
 ########################
 # Development Commands #
@@ -10,28 +10,32 @@ default:
 # Rebuild and switch NixOS
 [group('nix dev')]
 rebuild:
-  sudo nixos-rebuild switch
+	sudo nixos-rebuild switch
 
 # Rebuild and switch NixOS with verbose error logging
 [group('nix dev')]
 rebuild-v:
-  sudo nixos-rebuild switch --show-trace -L -v
+	sudo nixos-rebuild switch --show-trace -L -v
 
 # Rebuild and switch home manager
 [group('nix dev')]
 home:
-  home-manager switch
+	home-manager switch
 
 # Test flake config
 [group('nix dev')]
 check:
-  nix flake check
+	nix flake check
 
 # Run Alejandra formatting tests
 [group('nix dev')]
 format:
-  alejandra .
+	alejandra .
 
+# Print project tree hierarchy
+[group('nix dev')]
+tree:
+	tree -aI .git --noreport
 
 ##############################
 # System Management Commands #
@@ -40,23 +44,23 @@ format:
 # Quick garbage collection
 [group('nix sys')]
 gc:
-  nix-collect-garbage -d
+	nix-collect-garbage -d
 
 # List all generations on the system
 [group('nix sys')]
 list:
-  sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+	sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
 
 # Switch to generation <N>
 [positional-arguments]
 [group('nix sys')]
 @switch n:
-  sudo nix-env --switch-generation $1 --profile /nix/var/nix/profiles/system
+	sudo nix-env --switch-generation $1 --profile /nix/var/nix/profiles/system
 
 # Delete generation <N>
 [positional-arguments]
 [group('nix sys')]
 @delete n:
-  sudo nix-env --delete-generations $1 --profile /nix/var/nix/profiles/system
+	sudo nix-env --delete-generations $1 --profile /nix/var/nix/profiles/system
 
 
