@@ -30,10 +30,14 @@
   environment.variables.EDITOR = "vim";
 
   boot.loader.systemd-boot.configurationLimit = 10;
+
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 1w";
   };
+
+  # https://discourse.nixos.org/t/difference-between-nix-settings-auto-optimise-store-and-nix-optimise-automatic/25350
   nix.settings.auto-optimise-store = true;
+  nix.optimise.automatic = true;
 }
