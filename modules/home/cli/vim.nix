@@ -18,6 +18,7 @@ in {
   config = lib.mkIf config.home.cli.vim.enable {
     programs.vim = {
       enable = true;
+      plugins = [pkgs.vimPlugins.vim-just];
     };
 
     home.file = {
