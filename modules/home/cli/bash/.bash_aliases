@@ -2,6 +2,7 @@ alias rm='rm -i -v'
 alias mv='mv -i -v'
 alias cp='cp -i -v'
 alias ln='ln -i -v'
+alias less='less -FXRfM'
 
 alias ls="ls --color=auto"
 alias ll="ls -lah"
@@ -26,7 +27,7 @@ alias gistlist="gh gist list -L 9999"
 
 alias showps="ps aux"
 alias showcon="netstat -aW"
-#alias showcom="" #TODO: 
+#alias showcom="" #TODO:
 alias showcpu="top -bn2 | grep \"Cpu(s)\" | head -n1 | sed \"s/.*, *\([0-9.]*\)%* id.*/\1/\" | awk '{print 100 - \$1\"% CPU usage\"}'"
 alias showmem="printf \"%.2f%% Mem usage\n\" $(top -bn1 | grep 'KiB Mem' | awk '{print $8 / $4}')"
 alias topcpu="top -co '%CPU'"
