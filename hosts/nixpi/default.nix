@@ -22,7 +22,7 @@ in {
 
     # Host specific packages
     environment.systemPackages = with pkgs; [
-      shellcheck
+      # TODO
     ];
 
     # Pi kernel config

@@ -18,7 +18,7 @@ in {
 
     # Host specific packages
     environment.systemPackages = with pkgs; [
-      shellcheck
+      # TODO
     ];
 
     system.stateVersion = "24.05";
