@@ -21,9 +21,29 @@
 
   # Packages not defined explicitly in subdir modules
   home.packages = with pkgs; [
-    fzf
+    # Basic Utils
     tree
-    wget
+    bc
+    screen
+    dos2unix
+    file
+    #binutils # strings
+    #pngcheck
+
+    # Larger Utils
+    #pandoc
+    #ffmpeg
+
+    # Quality of Life
+    fzf
+    shellcheck
+
+    # Networking Utils
+    dig
+    traceroute
+    tcpdump
+    mtr
+    nmap
   ];
 
   programs.home-manager.enable = true;
