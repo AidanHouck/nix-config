@@ -28,7 +28,7 @@ alias gistlist="gh gist list -L 9999"
 alias showps="ps aux"
 alias showcon="netstat -aW"
 #alias showcom="" #TODO:
-alias showcpu="top -bn2 | grep \"Cpu(s)\" | head -n1 | sed \"s/.*, *\([0-9.]*\)%* id.*/\1/\" | awk '{print 100 - \$1\"% CPU usage\"}'"
+alias showcpu="top -bn1 | grep \"Cpu(s)\" | head -n1 | sed \"s/.*, *\([0-9.]*\)%* id.*/\1/\" | awk '{print 100 - \$1\"% CPU usage\"}'"
 alias showmem="printf \"%.2f%% Mem usage\n\" $(top -bn1 | grep 'KiB Mem' | awk '{print $8 / $4}')"
 alias topcpu="top -co '%CPU'"
 alias topmem="top -co '%MEM'"
@@ -44,6 +44,8 @@ alias :wq=":q"
 
 alias bashrc="source ~/.bashrc"
 alias bashal="source ~/.bash_aliases"
+
+alias nixg="cd ~/src/nix-config"
 
 # If running under WSL
 if [[ $(grep -i Microsoft /proc/version) ]]; then
