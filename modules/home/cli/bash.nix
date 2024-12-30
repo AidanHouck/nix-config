@@ -6,6 +6,7 @@
   ...
 }: let
   bashrcPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/.bashrc";
+  bash_profilePath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/.bash_profile";
   bash_aliasesPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/.bash_aliases";
 in {
   options = {
@@ -24,6 +25,9 @@ in {
     home.file = {
       ".bashrc" = {
         source = config.lib.file.mkOutOfStoreSymlink bashrcPath;
+      };
+      ".bash_profile" = {
+        source = config.lib.file.mkOutOfStoreSymlink bash_profilePath;
       };
       ".bash_aliases" = {
         source = config.lib.file.mkOutOfStoreSymlink bash_aliasesPath;
