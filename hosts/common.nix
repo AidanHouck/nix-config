@@ -18,17 +18,13 @@
   # Enable Flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # Common software
+  # Software important for maintaining the system
   environment.systemPackages = with pkgs; [
     git # Must init git first for Flakes dependency cloning
     sops # Nix secret management
     gh # GitHub CLI
     home-manager
-    vim
-    wget
-    tree
   ];
-  environment.variables.EDITOR = "vim";
 
   boot.loader.systemd-boot.configurationLimit = 10;
   nix.gc = {

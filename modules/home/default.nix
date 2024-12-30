@@ -17,9 +17,12 @@
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/houck/.config/sops/age/keys.txt";
 
+  # Packages not defined explicitly in subdir modules
   home.packages = with pkgs; [
     fzf
     fastfetch
+    tree
+    wget
   ];
 
   programs.home-manager.enable = true;
