@@ -1,6 +1,6 @@
 # WSL Hosts
 
-A collection of hosts that use [WSL](https://learn.microsoft.com/en-us/windows/wsl/install). 
+A collection of hosts that use [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 ## Setup WSL on a Windows Machine
 
@@ -23,27 +23,27 @@ PS E:\User\Downloads> wsl -d NixOS
 when trying to exec the wrapped shell
 
 Caused by:
-    No such file or directory (os error 2)
-```
+No such file or directory (os error 2)
+    ```
 
-Shutdown, remove NixOS, update WSL, then re-import:
-```
-wsl --shutdown
-wslconfig /unregister NixOS
-wsl --update
+    Shutdown, remove NixOS, update WSL, then re-import:
+    ```
+    wsl --shutdown
+    wslconfig /unregister NixOS
+    wsl --update
 
-wsl --import NixOS $env:USERPROFIL\NixOS\ nixos-wsl.tar.gz --version 2
-wsl -d NixOS
-```
+    wsl --import NixOS $env:USERPROFILE\NixOS\ nixos-wsl.tar.gz --version 2
+    wsl -d NixOS
+    ```
 
-3. Initial NixOS setup
+    3. Initial NixOS setup
 
-This is needed for WSL specifically before you can build a full image
-```
-sudo nix-channel --update
-sudo nixos-rebuild switch
-```
+    This is needed for WSL specifically before you can build a full image
+    ```
+    sudo nix-channel --update
+    sudo nixos-rebuild switch
+    ```
 
-4. Final NixOS setup
-Follow base [README.md](/README.md#new-machine-setup) setup instructions
+    4. Final NixOS setup
+    Follow base [README.md](/README.md#new-machine-setup) setup instructions
 
