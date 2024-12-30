@@ -4,6 +4,7 @@ alias cp='cp -i -v'
 alias ln='ln -i -v'
 alias less='less -FXRfM'
 alias tree='tree -a'
+alias sc='shellcheck'
 
 alias ls="ls --color=auto"
 alias ll="ls -lah"
