@@ -69,6 +69,21 @@
           ./hosts/wsl/wsl-home
         ];
       };
+
+      wsl-work = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        system = "x86_64-linux";
+        modules = [
+          nixos-wsl.nixosModules.default
+          {
+            wsl.enable = true;
+          }
+          {
+            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
+          }
+          ./hosts/wsl/wsl-work
+        ];
+      };
     };
 
     homeConfigurations = {
@@ -79,6 +94,12 @@
       };
 
       "houck@wsl-home" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [./modules/home];
+      };
+
+      "houck@wsl-work" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [./modules/home];
