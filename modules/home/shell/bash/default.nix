@@ -5,19 +5,19 @@
   pkgs,
   ...
 }: let
-  bashrcPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/bash/.bashrc";
-  bash_profilePath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/bash/.bash_profile";
-  bash_aliasesPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/bash/.bash_aliases";
+  bashrcPath = "${config.home.homeDirectory}/src/nix-config/modules/home/shell/bash/.bashrc";
+  bash_profilePath = "${config.home.homeDirectory}/src/nix-config/modules/home/shell/bash/.bash_profile";
+  bash_aliasesPath = "${config.home.homeDirectory}/src/nix-config/modules/home/shell/bash/.bash_aliases";
 in {
   options = {
-    home.cli.bash.enable = lib.mkOption {
+    home.shell.bash.enable = lib.mkOption {
       default = true;
       type = lib.types.bool;
       description = "enables bash home-manager module";
     };
   };
 
-  config = lib.mkIf config.home.cli.bash.enable {
+  config = lib.mkIf config.home.shell.bash.enable {
     #programs.bash = {
     #  enable = true;
     #};

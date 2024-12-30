@@ -8,6 +8,8 @@
   imports = [
     inputs.sops-nix.homeManagerModules.sops
     ./cli
+    #./gui
+    ./shell
   ];
 
   home.username = "houck";
