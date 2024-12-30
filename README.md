@@ -65,14 +65,14 @@ cp /etc/nixos/hardware-configuration.nix hosts/<hostname>/hardware-configuration
 5. Test build
 ```bash
 git add .
+nix flake test
 sudo nixos-rebuild build
 
 # If succeeded
 rm result
 
-# If the has fails this is because of the newly added
-# GitHub SSH keys changing the sha256 hash. Update
-# the expected hash and rebuild
+# The build may fail due to mismatched sha256 on GitHub's
+# pubkey download. Update the expected hash and rebuild.
 vim modules/nixos/system/users.nix
 ```
 
