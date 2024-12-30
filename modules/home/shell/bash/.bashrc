@@ -4,6 +4,9 @@ case $- in
 	*) return;;
 esac
 
+# Enable fzf autocompletion and keybinds
+eval "$(fzf --bash)"
+
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
