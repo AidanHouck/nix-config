@@ -6,9 +6,9 @@
 }: {
   imports = [
     ./git.nix
-    ./vim.nix
-    ./bash.nix
-    ./fastfetch.nix
+    ./vim
+    ./bash
+    ./fastfetch
   ];
 
   options = {

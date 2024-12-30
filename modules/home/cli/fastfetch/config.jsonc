@@ -1,0 +1,36 @@
+{
+	"$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+	"modules": [
+		"title",
+		"separator",
+		"os",
+		"host",
+		"kernel",
+		"uptime",
+		"packages",
+		"shell",
+		"cpu",
+		"gpu",
+		"memory",
+		"swap",
+		{
+			"type": "disk",
+			"folders": "/:/nix/store:/mnt/c"
+		},
+		{
+			"type": "localip",
+			"showIpv4": true,
+			//"showIpv6": true, // May need to tweak these on a proper dual-stack system
+			//"defaultRouteOnly": false,
+			//"showAllIps": true
+			"showPrefixLen": true
+		},
+		{
+			"type": "publicip",
+			"ipv6": false,
+			"timeout": 1000
+		},
+		"break",
+		"colors"
+	]
+}

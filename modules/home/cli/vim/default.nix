@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  vimrcPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/.vimrc";
+  vimrcPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/vim/.vimrc";
 in {
   options = {
     home.cli.vim.enable = lib.mkOption {

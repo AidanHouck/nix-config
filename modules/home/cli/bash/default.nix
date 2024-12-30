@@ -5,9 +5,9 @@
   pkgs,
   ...
 }: let
-  bashrcPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/.bashrc";
-  bash_profilePath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/.bash_profile";
-  bash_aliasesPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/.bash_aliases";
+  bashrcPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/bash/.bashrc";
+  bash_profilePath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/bash/.bash_profile";
+  bash_aliasesPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/bash/.bash_aliases";
 in {
   options = {
     home.cli.bash.enable = lib.mkOption {
