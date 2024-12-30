@@ -8,17 +8,17 @@ inoremap <C-U> <C-G>u<C-U>
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-  filetype plugin indent on
+	filetype plugin indent on
 
-  augroup vimStartup
-    au!
+	augroup vimStartup
+		au!
 
-    autocmd BufReadPost *
-      \ if line("'\"") >= 1 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
+		autocmd BufReadPost *
+					\ if line("'\"") >= 1 && line("'\"") <= line("$") |
+					\   exe "normal! g`\"" |
+					\ endif
 
-  augroup END
+	augroup END
 
 endif " has("autocmd")
 
@@ -52,10 +52,10 @@ vnoremap <Up> <Nop>
 
 " space = search, ctrl+space = r-search
 map <space> /
-map <C-space> ?
+	map <C-space> ?
 
-" clear search highlighting automatically
-autocmd InsertEnter * :let @/=""
+	" clear search highlighting automatically
+	autocmd InsertEnter * :let @/=""
 
 """"""""""""""""""""
 " misc options
@@ -107,4 +107,12 @@ set ttimeoutlen=100     " wait up to 100ms after Esc for special key
 " color
 set background=dark
 color desert
+
+""""""""""""""""""""""""
+" Plugin Configuration "
+""""""""""""""""""""""""
+" vim-autoformat
+let g:formatdef_alejandra_nix = '"alejandra -qq ."' " Use custom formatter
+let g:formatters_nix = ['alejandra_nix']
+au BufWrite * :Autoformat " Format on file save
 
