@@ -5,14 +5,14 @@
   ...
 }: {
   options = {
-    system.wlan.enable = lib.mkOption {
+    network.wlan.enable = lib.mkOption {
       default = false;
       type = lib.types.bool;
       description = "enables wlan connection";
     };
   };
 
-  config = lib.mkIf config.system.wlan.enable {
+  config = lib.mkIf config.network.wlan.enable {
     # Setup wireless using SSID/PSK from SOPS file
     sops.secrets."wpa_supplicant.conf" = {
       owner = "root";

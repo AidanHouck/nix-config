@@ -2,52 +2,6 @@
 
 My personal NixOS config. Uses flakes and contains standard [NixOS](https://nixos.org/ "NixOS Website") as well as [home-manager](https://github.com/nix-community/home-manager "NixOS Home-Manager GitHub Repo").
 
-```bash
-.
-├── flake.lock     # Auto-generated version lock file
-├── flake.nix      # Entry point
-├── hosts          # Host-specific config directory
-│   ├── common.nix # Config common to all hosts
-│   ├── nixpi      # Raspberry Pi 5
-│   │   ├── default.nix
-│   │   └── hardware-configuration.nix
-│   └── wsl        # Directory for WSL machines
-│       ├── common.nix
-│       ├── README.md
-│       ├── wsl-home
-│       │   └── default.nix
-│       └── wsl-work
-│           └── default.nix
-├── Justfile       # Command runner
-├── modules
-│   ├── home       # Home-manager modules
-│   │   ├── cli
-│   │   │   ├── .bash_aliases
-│   │   │   ├── bash.nix
-│   │   │   ├── .bash_profile
-│   │   │   ├── .bashrc
-│   │   │   ├── default.nix
-│   │   │   ├── git.nix
-│   │   │   ├── vim.nix
-│   │   │   └── .vimrc
-│   │   └── default.nix
-│   └── nixos      # NixOS system modules
-│       ├── cli
-│       │   ├── default.nix
-│       │   └── git.nix
-│       ├── default.nix
-│       └── system
-│           ├── default.nix
-│           ├── ssh.nix
-│           ├── sudo.nix
-│           ├── users.nix
-│           └── wlan.nix
-├── README.md
-├── secrets
-│   └── secrets.yaml # Encrypted secrets
-└── .sops.yaml       # SOPS secret management configuration file
-```
-
 ## Usage
 
 A [Justfile](https://github.com/casey/just) is provided for ease of day-to-day usage. List all available commands with `just`.

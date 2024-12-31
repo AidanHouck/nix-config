@@ -16,7 +16,7 @@ in {
   config = {
     aidan.vars.hostname = hostname;
 
-    system.wlan.enable = true;
+    network.wlan.enable = true;
     aidan.vars.interface = "wlan0";
 
     # Host specific packages

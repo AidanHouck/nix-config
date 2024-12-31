@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./system
+    ./network
     ./cli
     #./gui
   ];
