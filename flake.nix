@@ -42,9 +42,7 @@
     checks = forAllSystems (system: {
       pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
         src = ./.;
-        hooks = {
-          alejandra.enable = true;
-        };
+        hooks = {alejandra.enable = true;};
       };
     });
 
@@ -60,12 +58,8 @@
         system = "x86_64-linux";
         modules = [
           nixos-wsl.nixosModules.default
-          {
-            wsl.enable = true;
-          }
-          {
-            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
-          }
+          {wsl.enable = true;}
+          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
           ./hosts/wsl/wsl-home
         ];
       };
@@ -75,12 +69,8 @@
         system = "x86_64-linux";
         modules = [
           nixos-wsl.nixosModules.default
-          {
-            wsl.enable = true;
-          }
-          {
-            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
-          }
+          {wsl.enable = true;}
+          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
           ./hosts/wsl/wsl-work
         ];
       };
