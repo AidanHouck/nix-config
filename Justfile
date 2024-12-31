@@ -28,7 +28,7 @@ home:
 
 [private]
 alias hmv := home-v
-# Rebuild and switch NixOS with verbose error logging
+# Rebuild and switch home manager with verbose error logging
 [group('nix dev')]
 home-v:
 	home-manager switch --show-trace -L -v
@@ -46,6 +46,33 @@ alias fmt := format
 [group('nix dev')]
 format:
 	alejandra .
+
+########################
+# SOPS Secret Commands #
+########################
+
+[private]
+alias ss := sops-show
+# Display sops secret file
+[group('sops')]
+sops-show:
+	sops -d secrets/secrets.yaml
+
+[private]
+alias se := sops-edit
+[private]
+alias sops := sops-edit
+# Edit sops secret file
+[group('sops')]
+sops-edit:
+	sops secrets/secrets.yaml || true
+
+[private]
+alias su := sops-update
+# Update sops secret file with new keys in `.sops.yaml`
+[group('sops')]
+sops-update:
+	sops updatekeys secrets/secrets.yaml
 
 ##############################
 # System Management Commands #

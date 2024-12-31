@@ -31,7 +31,7 @@ nix-shell -p ssh-to-age --run "ssh-to-age < ~/.ssh/id_ed25519.pub"
 # On an already trusted machine:
 vim .sops.yaml
 # add new machine age pubkey
-sops updatekeys secrets/secrets.yaml
+just sops-update
 git commit .
 git push
 ```
