@@ -27,6 +27,13 @@ home:
 	home-manager switch
 
 [private]
+alias hmv := home-v
+# Rebuild and switch NixOS with verbose error logging
+[group('nix dev')]
+home-v:
+	home-manager switch --show-trace -L -v
+
+[private]
 alias test := check
 # Test flake config
 [group('nix dev')]
