@@ -13,7 +13,7 @@ in {
   ];
 
   config = {
-    variables.hostname = hostname;
+    aidan.vars.hostname = hostname;
     wsl.wslConf.network.hostname = hostname;
 
     # Host specific packages

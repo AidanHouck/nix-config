@@ -5,7 +5,6 @@
   inputs,
   ...
 }: let
-  interface = "wlan0";
   hostname = "nixpi";
 in {
   # Imports
@@ -15,10 +14,10 @@ in {
   ];
 
   config = {
-    system.wlan.enable = true;
+    aidan.vars.hostname = hostname;
 
-    variables.hostname = hostname;
-    variables.interface = interface;
+    system.wlan.enable = true;
+    aidan.vars.interface = "wlan0";
 
     # Host specific packages
     environment.systemPackages = with pkgs; [

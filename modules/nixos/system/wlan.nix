@@ -22,11 +22,11 @@
     };
 
     networking = {
-      hostName = config.variables.hostname;
+      hostName = config.aidan.vars.hostname;
       wireless = {
         enable = true;
         allowAuxiliaryImperativeNetworks = true; # Read /etc/wpa_supplicant.conf
-        interfaces = [config.variables.interface];
+        interfaces = [config.aidan.vars.interface];
       };
     };
   };
