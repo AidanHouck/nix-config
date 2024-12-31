@@ -12,7 +12,7 @@ alias lt="ls -laht"
 alias vi="vim"
 alias mkdir="mkdir -p"
 
-alias gad="git add ."
+alias gad="git add"
 alias gap="git add -p"
 
 alias gip="git push"
