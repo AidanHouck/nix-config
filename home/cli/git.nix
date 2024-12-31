@@ -6,14 +6,14 @@
   ...
 }: {
   options = {
-    home.cli.git.enable = lib.mkOption {
+    aidan.home.cli.git.enable = lib.mkOption {
       default = true;
       type = lib.types.bool;
       description = "enables git/gh home-manager module";
     };
   };
 
-  config = lib.mkIf config.home.cli.git.enable {
+  config = lib.mkIf config.aidan.home.cli.git.enable {
     programs.git = {
       enable = true;
       userName = "Aidan Houck";

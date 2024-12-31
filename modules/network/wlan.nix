@@ -5,14 +5,14 @@
   ...
 }: {
   options = {
-    network.wlan.enable = lib.mkOption {
+    aidan.modules.network.wlan.enable = lib.mkOption {
       default = false;
       type = lib.types.bool;
       description = "enables wlan connection";
     };
   };
 
-  config = lib.mkIf config.network.wlan.enable {
+  config = lib.mkIf config.aidan.modules.network.wlan.enable {
     # Setup wireless using SSID/PSK from SOPS file
     sops.secrets."wpa_supplicant.conf" = {
       owner = "root";

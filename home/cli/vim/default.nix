@@ -8,14 +8,14 @@
   vimrcPath = "${config.home.homeDirectory}/src/nix-config/home/cli/vim/.vimrc";
 in {
   options = {
-    home.cli.vim.enable = lib.mkOption {
+    aidan.home.cli.vim.enable = lib.mkOption {
       default = true;
       type = lib.types.bool;
       description = "enables vim home-manager module";
     };
   };
 
-  config = lib.mkIf config.home.cli.vim.enable {
+  config = lib.mkIf config.aidan.home.cli.vim.enable {
     programs.vim = {
       enable = true;
       extraConfig = ''

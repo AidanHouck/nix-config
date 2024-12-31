@@ -10,14 +10,14 @@
   bash_aliasesPath = "${config.home.homeDirectory}/src/nix-config/home/shell/bash/.bash_aliases";
 in {
   options = {
-    home.shell.bash.enable = lib.mkOption {
+    aidan.home.shell.bash.enable = lib.mkOption {
       default = true;
       type = lib.types.bool;
       description = "enables bash home-manager module";
     };
   };
 
-  config = lib.mkIf config.home.shell.bash.enable {
+  config = lib.mkIf config.aidan.home.shell.bash.enable {
     #programs.bash = {
     #  enable = true;
     #};

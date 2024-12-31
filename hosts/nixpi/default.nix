@@ -14,10 +14,10 @@ in {
   ];
 
   config = {
-    network.hostname.enable = true;
+    aidan.modules.network.hostname.enable = true;
     aidan.vars.hostname = hostname;
 
-    network.wlan.enable = true;
+    aidan.modules.network.wlan.enable = true;
     aidan.vars.interface = "wlan0";
 
     # Host specific packages

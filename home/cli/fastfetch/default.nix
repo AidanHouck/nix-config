@@ -8,14 +8,14 @@
   fastfetchConfigPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/fastfetch/config.jsonc";
 in {
   options = {
-    home.cli.fastfetch.enable = lib.mkOption {
+    aidan.home.cli.fastfetch.enable = lib.mkOption {
       default = true;
       type = lib.types.bool;
       description = "enables fastfetch home-manager module";
     };
   };
 
-  config = lib.mkIf config.home.cli.fastfetch.enable {
+  config = lib.mkIf config.aidan.home.cli.fastfetch.enable {
     programs.fastfetch = {
       enable = true;
     };

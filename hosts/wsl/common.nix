@@ -13,7 +13,7 @@
   config = {
     # WSL config
     wsl.enable = true;
-    wsl.defaultUser = config.system.users.username;
+    wsl.defaultUser = config.aidan.modules.system.users.username;
 
     system.stateVersion = "24.05";
   };
