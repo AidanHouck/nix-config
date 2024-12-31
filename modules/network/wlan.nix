@@ -22,7 +22,6 @@
     };
 
     networking = {
-      hostName = config.aidan.vars.hostname;
       wireless = {
         enable = true;
         allowAuxiliaryImperativeNetworks = true; # Read /etc/wpa_supplicant.conf

@@ -14,6 +14,7 @@ in {
   ];
 
   config = {
+    network.hostname.enable = true;
     aidan.vars.hostname = hostname;
 
     network.wlan.enable = true;
