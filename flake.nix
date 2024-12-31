@@ -80,19 +80,19 @@
       "houck@nixpi" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [./modules/home];
+        modules = [./home];
       };
 
       "houck@wsl-home" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [./modules/home];
+        modules = [./home];
       };
 
       "houck@wsl-work" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [./modules/home];
+        modules = [./home];
       };
     };
   };

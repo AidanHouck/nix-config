@@ -8,7 +8,7 @@
   # Imports
   imports = [
     inputs.sops-nix.nixosModules.sops
-    ./../modules/nixos
+    ./../modules
   ];
 
   # All system-wide config defined under `aidan.vars.x` scope
