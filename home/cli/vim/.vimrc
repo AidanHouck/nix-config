@@ -114,5 +114,5 @@ color desert
 " vim-autoformat
 let g:formatdef_alejandra_nix = '"alejandra -qq ."' " Use custom formatter
 let g:formatters_nix = ['alejandra_nix']
-au BufWrite * :Autoformat " Format on file save
+au BufWrite *.nix :Autoformat " Format on file save
 
