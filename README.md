@@ -51,6 +51,7 @@ sudo ln -s ~/src/nix-config/flake.nix ~/.config/home-manager/flake.nix
 ```bash
 mkdir hosts/<hostname>
 cp hosts/<template>/default.nix hosts/<hostname>/default.nix
+cp hosts/<template>/home.nix hosts/<hostname>/home.nix
 # Make any needed changes
 vim flake.nix
 # Add new host and home-manager profiles
