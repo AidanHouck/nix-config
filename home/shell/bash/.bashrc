@@ -5,6 +5,7 @@ case $- in
 esac
 
 # Enable fzf autocompletion and keybinds
+export FZF_COMPLETION_TRIGGER='*'
 eval "$(fzf --bash)"
 
 # don't put duplicate lines or lines starting with space in the history.
