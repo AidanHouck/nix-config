@@ -53,6 +53,12 @@
         modules = [./hosts/nixpi];
       };
 
+      router = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        system = "x86_64-linux";
+        modules = [./hosts/router];
+      };
+
       wsl-home = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         system = "x86_64-linux";
@@ -81,6 +87,12 @@
         pkgs = nixpkgs.legacyPackages.aarch64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [./hosts/nixpi/home.nix];
+      };
+
+      "houck@router" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [./hosts/router/home.nix];
       };
 
       "houck@wsl-home" = home-manager.lib.homeManagerConfiguration {
