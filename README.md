@@ -11,7 +11,7 @@ A [Justfile](https://github.com/casey/just) is provided for ease of day-to-day u
 1. Set temp Hostname/Username
 ```bash
 sudo hostname <NEW HOSTNAME>
-sudo useradd -g users -G wheel houck
+sudo useradd -mg users -G wheel houck
 sudo passwd houck
 su houck
 ```
