@@ -18,7 +18,7 @@ su houck
 
 2. Generate SSH (and age) keys
 ```bash
-sh-keygen -t ed25519
+ssh-keygen -t ed25519
 cat ~/.ssh/id_ed25519.pub
 # add to: https://github.com/settings/keys
 
