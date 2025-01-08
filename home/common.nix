@@ -44,6 +44,7 @@
     tcpdump
     mtr
     nmap
+    whois
   ];
 
   programs.home-manager.enable = true;
