@@ -24,6 +24,8 @@ in {
       "net.ipv6.conf.all.use_tempaddr" = 0;
       "net.ipv6.conf.${wan}.accept_ra" = 2;
       "net.ipv6.conf.${wan}.autoconf" = 1;
+      "net.ipv6.conf.${lan}/10.accept_ra" = 2; # Temp before go live
+      "net.ipv6.conf.${lan}/10.autoconf" = 1; # Temp before go live
     };
 
     networking = {
@@ -63,12 +65,28 @@ in {
 
       interfaces = {
         ${wan}.useDHCP = true;
+        ${lan}.useDHCP = false;
 
         "${lan}.10" = {
           ipv4.addresses = [
             {
               address = "192.168.10.3";
               prefixLength = 24;
+            }
+          ];
+          ipv6.addresses = [
+            {
+              address = "fd00:10::3";
+              prefixLength = 64;
+            }
+          ];
+          # Temp before go live
+          ipv4.routes = [
+            {
+              address = "0.0.0.0";
+              prefixLength = 0;
+              via = "192.168.10.1";
+              options.scope = "global";
             }
           ];
         };
