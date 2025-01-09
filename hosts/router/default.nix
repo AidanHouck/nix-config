@@ -10,6 +10,7 @@ in {
   # Imports
   imports = [
     ../common.nix
+    ./network.nix
     ./hardware-configuration.nix
   ];
 
