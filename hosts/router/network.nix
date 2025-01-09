@@ -5,8 +5,8 @@
   inputs,
   ...
 }: let
-  wan = "enp1s0";
-  lan = "enp2s0";
+  lan = "enp1s0";
+  wan = "enp2s0";
 in {
   config = {
     environment.systemPackages = with pkgs; [
@@ -67,7 +67,7 @@ in {
         "${lan}.10" = {
           ipv4.addresses = [
             {
-              address = "192.168.100.3";
+              address = "192.168.10.3";
               prefixLength = 24;
             }
           ];
