@@ -50,13 +50,19 @@
       nixpi = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         system = "aarch64-linux";
-        modules = [./hosts/nixpi];
+        modules = [
+          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
+          ./hosts/nixpi
+        ];
       };
 
       router = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         system = "x86_64-linux";
-        modules = [./hosts/router];
+        modules = [
+          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
+          ./hosts/router
+        ];
       };
 
       wsl-home = nixpkgs.lib.nixosSystem {
