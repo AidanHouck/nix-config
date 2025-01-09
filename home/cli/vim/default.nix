@@ -21,10 +21,10 @@ in {
       extraConfig = ''
         source ~/.vimrc " Nix will only use its' auto-generated .vimrc by default.
       '';
-      plugins = with pkgs.vimPlugins; [
-        vim-just
-        vim-autoformat
-      ];
+      #plugins = with pkgs.vimPlugins; [
+      #  vim-just
+      #  vim-autoformat
+      #];
     };
 
     home.file = {

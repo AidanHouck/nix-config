@@ -112,7 +112,7 @@ color desert
 " Plugin Configuration "
 """"""""""""""""""""""""
 " vim-autoformat
-let g:formatdef_alejandra_nix = '"alejandra -qq ."' " Use custom formatter
-let g:formatters_nix = ['alejandra_nix']
-au BufWrite *.nix :Autoformat " Format on file save
+"let g:formatdef_alejandra_nix = '"alejandra -qq ."' " Use custom formatter
+"let g:formatters_nix = ['alejandra_nix']
+"au BufWrite *.nix :Autoformat " Format on file save
 
