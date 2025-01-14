@@ -2,19 +2,21 @@ alias rm='rm -i -v'
 alias mv='mv -i -v'
 alias cp='cp -i -v'
 alias ln='ln -i -v'
+
+alias ls="ls --color=auto"
+alias mkdir="mkdir -p"
 alias less='less -FXRfM'
 alias tree='tree -a'
 alias sc='shellcheck'
 
-alias ls="ls --color=auto"
+alias catb="bat -n --pager 'less -FXRfM'"
+
 alias ll="ls -lah"
 alias lt="ls -laht"
 alias vi="vim"
-alias mkdir="mkdir -p"
 
 alias gad="git add"
 alias gap="git add -p"
-
 alias gip="git push"
 alias gis="git status"
 alias gic="git commit"

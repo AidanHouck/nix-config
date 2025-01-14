@@ -22,6 +22,7 @@
   # Packages not defined explicitly in subdir modules
   home.packages = with pkgs; [
     # Basic Utils
+    bat
     tree
     bc
     screen
