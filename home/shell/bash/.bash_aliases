@@ -9,7 +9,8 @@ alias less='less -FXRfM'
 alias tree='tree -a'
 alias sc='shellcheck'
 
-alias catb="bat -n --pager 'less -FXRfM'"
+alias bat="bat -n --pager 'less -FXRfM'"
+alias catb="bat"
 
 alias ll="ls -lah"
 alias lt="ls -laht"
