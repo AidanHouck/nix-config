@@ -11,6 +11,11 @@ eval "$(fzf --bash)"
 # Pager options
 export PAGER='less'
 export LESS='-FXRfM'
+# man->bat
+export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
+# Use default less -M prompt but add $MAN_PN at start
+export MANLESS='$MAN_PN ?f%f .?n?m(%T %i of %m) ..?ltlines %lt-%lb?L/%L. :byte %
+bB?s/%s. .?e(END) ?x- Next\: %x.:?pB%pB\%..%t'
 
 # History options
 HISTCONTROL=ignoreboth # No duplicates or leading whitespace
