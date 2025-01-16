@@ -8,19 +8,14 @@ esac
 export FZF_COMPLETION_TRIGGER='*'
 eval "$(fzf --bash)"
 
-# don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
 # Pager options
 export PAGER='less'
 export LESS='-FXRfM'
 
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# update .bash_history in real time, not on shell close
-export PROMPT_COMMAND='history -a'
-
-# big history file, add timestamps
+# History options
+HISTCONTROL=ignoreboth # No duplicates or leading whitespace
+shopt -s histappend # Append to histfile instead of overwrite
+export PROMPT_COMMAND='history -a' # Update histfile in real time, not on shell exit
 HISTSIZE=10000
 HISTFILESIZE=10000
 export HISTTIMEFORMAT="%F %I:%M:%S %p "
