@@ -5,11 +5,10 @@ alias ln='ln -i -v'
 
 alias ls="ls --color=auto"
 alias mkdir="mkdir -p"
-alias less='less -FXRfM'
 alias tree='tree -a'
 alias sc='shellcheck'
 
-alias bat="bat -n --pager 'less -FXRfM'"
+alias bat="bat -n"
 alias catb="bat"
 
 alias ll="ls -lah"
