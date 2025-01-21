@@ -18,6 +18,11 @@
       enable = true;
       userName = "Aidan Houck";
       userEmail = "AidanHouck@users.noreply.github.com";
+      extraConfig = {
+        help = {
+          autocorrect = "prompt";
+        };
+      };
     };
 
     # GitHub CLI for credential helper
