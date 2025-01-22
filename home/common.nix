@@ -40,6 +40,7 @@
     shellcheck
 
     # Networking Utils
+    wget
     dig
     traceroute
     tcpdump
