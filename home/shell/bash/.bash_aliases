@@ -20,8 +20,10 @@ alias gap="git add -p"
 alias gip="git push"
 alias gis="git status"
 alias gic="git commit"
-alias gid="git diff"
-alias gidc="git diff --cached"
+
+_GIT_DIFF_ARGS="--diff-filter=d --no-prefix --patience --color=always"
+alias gid="git diff $_GIT_DIFF_ARGS | tail -n +5 | sed -E 's/@@.+@@//g'"
+alias gidc="git diff $_GIT_DIFF_ARGS --cached | tail -n +5 | sed -E 's/@@.+@@//g'"
 
 alias glog="git log --pretty=format:'%C(auto)%H Author: %an%n    %s%n%b'"
 alias glogl="git log --pretty=format:'%C(auto)commit %H%nAuthor: %an%nDate: %ad%n    %s%n%b%n '"
