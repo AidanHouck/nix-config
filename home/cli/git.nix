@@ -18,6 +18,11 @@
       enable = true;
       userName = "Aidan Houck";
       userEmail = "AidanHouck@users.noreply.github.com";
+      aliases = {
+        undo = "reset HEAD~";
+        last = "log -1 HEAD";
+      };
+
       extraConfig = {
         help = {
           autocorrect = "prompt";
