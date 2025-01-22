@@ -70,6 +70,9 @@ alias nixg="cd ~/src/nix-config"
 
 # If running under WSL
 if [[ $(grep -i Microsoft /proc/version) ]]; then
-	alias exp="explorer.exe ."
+	function exp {
+		# Open explorer.exe in $1, or current working dir if not provided
+		explorer.exe $(wslpath -w "${1:-.}")
+	}
 	alias clip="tee >(/mnt/c/Windows/system32/clip.exe)" # example usage: `echo hi | clip`
 fi
