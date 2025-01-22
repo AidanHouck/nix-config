@@ -27,6 +27,9 @@
         help = {
           autocorrect = "prompt";
         };
+        init = {
+          defaultBranch = "main";
+        };
       };
     };
 
