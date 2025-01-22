@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    ./../../../home/common.nix
+    ./../../home-common.nix
   ];
 
   # Enable ZSH

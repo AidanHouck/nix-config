@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    ./../../home/common.nix
+    ./../home-common.nix
   ];
 
   # Packages for this host only
