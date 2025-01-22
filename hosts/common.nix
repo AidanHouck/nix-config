@@ -37,6 +37,7 @@
       vim
     ];
     environment.variables.EDITOR = "vim";
+    environment.variables.GIT_EDITOR = "vim -c'startinsert|norm! ggA'";
 
     boot.loader.systemd-boot.configurationLimit = 10;
 
