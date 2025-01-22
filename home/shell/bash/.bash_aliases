@@ -33,6 +33,12 @@ alias gpat="git format-patch -1"
 
 alias gistlist="gh gist list -L 9999"
 
+# Bitwarden CLI
+alias bw="bw --pretty"
+alias bwu="bw unlock --passwordenv BW_MASTER_PASS"
+alias bwl="bw lock"
+alias bws="bw list items --search"
+
 alias showps="ps aux"
 alias showcon="netstat -aW"
 #alias showcom="" #TODO:

@@ -6,5 +6,6 @@
 }: {
   imports = [
     ./git.nix
+    ./bitwarden-cli.nix
   ];
 }
