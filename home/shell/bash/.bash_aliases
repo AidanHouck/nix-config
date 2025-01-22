@@ -35,9 +35,13 @@ alias gistlist="gh gist list -L 9999"
 
 # Bitwarden CLI
 alias bw="bw --pretty"
-alias bwu="bw unlock --passwordenv BW_MASTER_PASS"
 alias bwl="bw lock"
 alias bws="bw list items --search"
+function bwu {
+	# Unlock bitwarden vault, get a temp session key,
+	# then set that key to an environment variable
+	export BW_SESSION="$(bw unlock --raw --passwordenv BW_MASTER_PASS)"
+}
 
 alias showps="ps aux"
 alias showcon="netstat -aW"
