@@ -45,7 +45,7 @@ alias fmt := format
 # Run repo formatting
 [group('nix dev')]
 format:
-	alejandra .
+	alejandra . 2> >(grep -v -e "Special" -e "github.com" | head -n -1)
 
 ########################
 # SOPS Secret Commands #
