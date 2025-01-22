@@ -23,7 +23,7 @@ alias gic="git commit"
 
 function gid {
 	local _GIT_DIFF_ARGS="--diff-filter=d --no-prefix --patience --color=always"
-	git diff $_GIT_DIFF_ARGS $@ | tail -n +5 | sed -E 's/@@.+@@//g';
+	git diff $_GIT_DIFF_ARGS $@ | tail -n +5 | sed -E 's/@@.+@@//g' | less;
 }
 alias gidc="gid --cached"
 
