@@ -90,6 +90,9 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
+" show whitespace
+set list
+
 " add line numbers
 set number
 
