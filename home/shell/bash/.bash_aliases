@@ -7,7 +7,7 @@ alias ln='ln -i -v'
 # Sane defaults
 alias ls="ls --color=auto"
 alias mkdir="mkdir -p"
-alias tree='tree -a'
+#alias tree='tree -a'
 alias ll="ls -lah"
 alias lt="ls -laht"
 
