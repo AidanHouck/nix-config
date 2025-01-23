@@ -23,6 +23,7 @@
   home.packages = with pkgs; [
     # Basic Utils
     bat
+    tldr
     tree
     bc
     screen
