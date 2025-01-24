@@ -58,7 +58,13 @@ alias py="python"
 alias py3="python3"
 alias python="python3"
 
-alias ..="cd .."
+alias_str=".."
+cmd_str="cd .."
+for i in $(seq 1 10); do
+	alias ${alias_str}="$cmd_str"
+	alias_str="${alias_str}."
+	cmd_str="${cmd_str}/.."
+done
 
 alias cls="clear"
 alias :q="echo fool"
