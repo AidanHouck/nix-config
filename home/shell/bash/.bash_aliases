@@ -58,6 +58,8 @@ alias py="python"
 alias py3="python3"
 alias python="python3"
 
+alias ..="cd .."
+
 alias cls="clear"
 alias :q="echo fool"
 alias :wq=":q"
