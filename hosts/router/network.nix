@@ -7,6 +7,7 @@
 }: let
   lan = "enp1s0";
   wan = "enp2s0";
+  vlan_list = [10 20 21 25 30 40];
 in {
   config = {
     environment.systemPackages = with pkgs; [
@@ -31,37 +32,14 @@ in {
     networking = {
       useDHCP = false;
       nameservers = ["192.168.30.250" "192.168.30.251" "fd00:30::250" "fd00:30::251"];
-      vlans = {
-        "${lan}.10" = {
-          id = 10;
-          interface = "${lan}";
-        };
 
-        "${lan}.20" = {
-          id = 20;
+      # Enumerate VLANs from vlan_list
+      vlans = builtins.listToAttrs (map (vlan:
+        lib.nameValuePair "${"${lan}." + builtins.toString vlan}" {
+          id = vlan;
           interface = "${lan}";
-        };
-
-        "${lan}.21" = {
-          id = 21;
-          interface = "${lan}";
-        };
-
-        "${lan}.25" = {
-          id = 25;
-          interface = "${lan}";
-        };
-
-        "${lan}.30" = {
-          id = 30;
-          interface = "${lan}";
-        };
-
-        "${lan}.40" = {
-          id = 40;
-          interface = "${lan}";
-        };
-      };
+        })
+      vlan_list);
 
       interfaces = {
         ${wan}.useDHCP = true;
