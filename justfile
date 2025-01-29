@@ -41,6 +41,14 @@ check:
 	nix flake check
 
 [private]
+alias shell := repl
+# Enter test shell environment
+[group('nix dev')]
+repl:
+	# Entering nix repl. Use builtins.x for std lib functions
+	nix repl .
+
+[private]
 alias fmt := format
 # Run repo formatting
 [group('nix dev')]
