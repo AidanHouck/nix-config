@@ -45,8 +45,13 @@ alias shell := repl
 # Enter test shell environment
 [group('nix dev')]
 repl:
-	# Entering nix repl. Use ':doc builtins.x' for std lib functions
-	nix repl .
+	# ':doc builtins.x' or ':doc lib.x'
+	# 'PKGNAME.meta' to view package info
+	#
+	# ':lf .' to load current flake
+	# ':p nixosConfigurations.HOST.options.programs.PROGRAM.OPTION' to view NixOS Module options
+	#
+	nix repl --expr 'import <nixpkgs>{}'
 
 [private]
 alias fmt := format
