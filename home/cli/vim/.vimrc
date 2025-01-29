@@ -20,7 +20,13 @@ if has("autocmd")
 
 	augroup END
 
+	" Fix nix-shell Shebang highlighting
+	augroup my_filetypes
+		autocmd BufNewFile,BufRead *.hs syntax match Comment /#!.*/
+	augroup END
+
 endif " has("autocmd")
+
 
 """""""""""""""""""""
 " keybinds/behavior "
