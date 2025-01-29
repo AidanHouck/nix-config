@@ -35,85 +35,45 @@ in {
 
       # Enumerate VLANs from vlan_list
       vlans = builtins.listToAttrs (map (vlan:
-        lib.nameValuePair "${"${lan}." + builtins.toString vlan}" {
+        lib.nameValuePair "${"${lan}.${builtins.toString vlan}"}" {
           id = vlan;
           interface = "${lan}";
         })
       vlan_list);
 
-      interfaces = {
-        ${wan}.useDHCP = true;
-        ${lan}.useDHCP = false;
+      interfaces =
+        builtins.listToAttrs (map (vlan:
+          lib.nameValuePair "${"${lan}.${builtins.toString vlan}"}" {
+            ipv4.addresses = [
+              {
+                address = "192.168.${builtins.toString vlan}.3";
+                prefixLength = 24;
+              }
+            ];
+            ipv6.addresses = [
+              {
+                address = "fd00:${builtins.toString vlan}::3";
+                prefixLength = 64;
+              }
+            ];
+          })
+        vlan_list)
+        // {
+          ${wan}.useDHCP = true;
+          ${lan}.useDHCP = false;
 
-        "${lan}.10" = {
-          ipv4.addresses = [
-            {
-              address = "192.168.10.3";
-              prefixLength = 24;
-            }
-          ];
-          ipv6.addresses = [
-            {
-              address = "fd00:10::3";
-              prefixLength = 64;
-            }
-          ];
-          # Temp before go live
-          ipv4.routes = [
-            {
-              address = "0.0.0.0";
-              prefixLength = 0;
-              via = "192.168.10.1";
-              options.scope = "global";
-            }
-          ];
+          "${lan}.10" = {
+            # Temp before go live
+            ipv4.routes = [
+              {
+                address = "0.0.0.0";
+                prefixLength = 0;
+                via = "192.168.10.1";
+                options.scope = "global";
+              }
+            ];
+          };
         };
-
-        "${lan}.20" = {
-          ipv4.addresses = [
-            {
-              address = "192.168.20.3";
-              prefixLength = 24;
-            }
-          ];
-        };
-
-        "${lan}.21" = {
-          ipv4.addresses = [
-            {
-              address = "192.168.21.3";
-              prefixLength = 24;
-            }
-          ];
-        };
-
-        "${lan}.25" = {
-          ipv4.addresses = [
-            {
-              address = "192.168.25.3";
-              prefixLength = 24;
-            }
-          ];
-        };
-
-        "${lan}.30" = {
-          ipv4.addresses = [
-            {
-              address = "192.168.30.3";
-              prefixLength = 24;
-            }
-          ];
-        };
-
-        "${lan}.40" = {
-          ipv4.addresses = [
-            {
-              address = "192.168.40.3";
-              prefixLength = 24;
-            }
-          ];
-        };
-      };
     };
 
     system.stateVersion = "24.11";
