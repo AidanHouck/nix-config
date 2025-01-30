@@ -5,6 +5,8 @@
   inputs,
   ...
 }: let
+  # Heavily inspired by https://github.com/mdlayher/homelab/blob/main/nixos/routnerr-3/networking.nix
+  # Thank you, Matt!
   lan = "untagged0";
   wan = "wan0";
 
