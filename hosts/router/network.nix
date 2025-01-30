@@ -8,6 +8,21 @@
   lan = "enp1s0";
   wan = "enp2s0";
   vlan_list = [10 20 21 25 30 40];
+
+  createInterface = vlan: {
+    ipv4.addresses = [
+      {
+        address = "192.168.${builtins.toString vlan}.3";
+        prefixLength = 24;
+      }
+    ];
+    ipv6.addresses = [
+      {
+        address = "fd00:${builtins.toString vlan}::3";
+        prefixLength = 64;
+      }
+    ];
+  };
 in {
   config = {
     environment.systemPackages = with pkgs; [
@@ -41,29 +56,26 @@ in {
         })
       vlan_list);
 
-      interfaces =
-        builtins.listToAttrs (map (vlan:
-          lib.nameValuePair "${"${lan}.${builtins.toString vlan}"}" {
+      interfaces = {
+        ${wan}.useDHCP = true;
+        ${lan}.useDHCP = false;
+
+        "${lan}.20" = createInterface 20;
+        "${lan}.21" = createInterface 21;
+        "${lan}.25" = createInterface 25;
+        "${lan}.30" = createInterface 30;
+        "${lan}.40" = createInterface 40;
+
+        "${lan}.10" =
+          # createInterface 10
+          {
+            # Temp before go live
             ipv4.addresses = [
               {
-                address = "192.168.${builtins.toString vlan}.3";
+                address = "192.168.10.3";
                 prefixLength = 24;
               }
             ];
-            ipv6.addresses = [
-              {
-                address = "fd00:${builtins.toString vlan}::3";
-                prefixLength = 64;
-              }
-            ];
-          })
-        vlan_list)
-        // {
-          ${wan}.useDHCP = true;
-          ${lan}.useDHCP = false;
-
-          "${lan}.10" = {
-            # Temp before go live
             ipv4.routes = [
               {
                 address = "0.0.0.0";
@@ -72,8 +84,14 @@ in {
                 options.scope = "global";
               }
             ];
+            ipv6.addresses = [
+              {
+                address = "fd00:10::3";
+                prefixLength = 64;
+              }
+            ];
           };
-        };
+      };
     };
 
     system.stateVersion = "24.11";
