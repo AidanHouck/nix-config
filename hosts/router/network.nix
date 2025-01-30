@@ -84,7 +84,11 @@ in {
       };
       networks."0-${wan}" = {
         matchConfig.Name = wan;
-        networkConfig.DHCP = "yes";
+        networkConfig = {
+          DHCP = "yes";
+          EmitLLDP = "no";
+          IPv6SendRA = "no";
+        };
         dhcpV4Config = {
           UseDNS = false;
           UseDomains = false;
@@ -111,6 +115,15 @@ in {
       };
       networks."1-${lan}" = {
         matchConfig.Name = lan;
+        # Disable most things on physical interface, we have
+        # no need since we don't have any untagged networks
+        networkConfig = {
+          LinkLocalAddressing = "no";
+          LLDP = "no";
+          EmitLLDP = "no";
+          IPv6AcceptRA = "no";
+          IPv6SendRA = "no";
+        };
         vlan = [
           "lan0"
           "privSSID0"
