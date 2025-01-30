@@ -40,6 +40,11 @@ alias test := check
 check:
 	nix flake check
 
+# Test flake config with verbose error logging
+[group('nix dev')]
+check-v:
+	nix flake check --show-trace -L -v
+
 [private]
 alias shell := repl
 # Enter test shell environment
