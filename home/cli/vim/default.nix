@@ -6,6 +6,7 @@
   ...
 }: let
   vimrcPath = "${config.home.homeDirectory}/src/nix-config/home/cli/vim/.vimrc";
+  vimBashPath = "${config.home.homeDirectory}/src/nix-config/home/cli/vim/vim_bash";
 in {
   options = {
     aidan.home.cli.vim.enable = lib.mkOption {
@@ -30,6 +31,9 @@ in {
     home.file = {
       ".vimrc" = {
         source = config.lib.file.mkOutOfStoreSymlink vimrcPath;
+      };
+      ".vim/vim_bash" = {
+        source = config.lib.file.mkOutOfStoreSymlink vimBashPath;
       };
     };
   };
