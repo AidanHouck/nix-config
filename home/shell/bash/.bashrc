@@ -68,6 +68,7 @@ esac
 
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
+	export BASH_ENV="~/.bash_aliases"
 	. ~/.bash_aliases
 fi
 

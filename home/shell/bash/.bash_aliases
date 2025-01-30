@@ -1,3 +1,5 @@
+shopt -s expand_aliases
+
 # Interactive/verbose file operations
 alias rm='rm -i -v'
 alias mv='mv -i -v'
