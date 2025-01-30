@@ -48,7 +48,7 @@ function bwu {
 alias showps="ps aux"
 alias showcon="netstat -aW"
 alias showcpu="top -bn1 | grep \"Cpu(s)\" | head -n1 | sed \"s/.*, *\([0-9.]*\)%* id.*/\1/\" | awk '{print 100 - \$1\"% CPU usage\"}'"
-alias showmem="printf \"%.2f%% Mem usage\n\" $(top -bn1 | grep 'KiB Mem' | awk '{print $8 / $4}')"
+alias showmem='printf "%.2f%% Mem usage\n" $(top -bn1 | grep '\''KiB Mem'\'' | awk '\''{print $8 / $4}'\'')'
 alias topcpu="top -co '%CPU'"
 alias topmem="top -co '%MEM'"
 
