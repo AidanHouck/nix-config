@@ -26,7 +26,7 @@ alias gic="git commit"
 
 function gid {
 	local _GIT_DIFF_ARGS="--diff-filter=d --no-prefix --patience --color=always"
-	git diff $_GIT_DIFF_ARGS $@ | perl -0777 -pe 's/\Qdiff --git\E.*?\Q+\E//gs;' -e 's/\Q@@\E.*?\Q@@\E//gs' | bat
+	git diff $_GIT_DIFF_ARGS $@ | perl -0777 -pe 's/\Qdiff --git\E.*?\Q+\E//gs;' -e 's/\Q@@\E.*?\Q@@\E//gs' | bat -p
 }
 alias gidc="gid --cached"
 
