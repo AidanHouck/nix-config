@@ -13,7 +13,8 @@ fi
 URL_BASE='https://raw.githubusercontent.com/AidanHouck/nix-config/refs/heads/main/home'
 
 curl --create-dirs --output-dir ~ -ZOs "${URL_BASE}/shell/bash/{.bashrc,.bash_aliases,.bash_profile}"
-curl --create-dirs --output-dir ~ -Os "${URL_BASE}/shell/cli/vim/.vimrc"
-curl --create-dirs --output-dir ~/.config/.vim -Os "${URL_BASE}/shell/cli/vim/vim_bash"
-curl --create-dirs --output-dir ~/.config/fastfetch -Os "${URL_BASE}/shell/cli/fastfetch/config.jsonc"
+
+curl --create-dirs --output-dir ~ -Os "${URL_BASE}/cli/vim/.vimrc"
+curl --create-dirs --output-dir ~/.config/.vim -Os "${URL_BASE}/cli/vim/vim_bash"
+curl --create-dirs --output-dir ~/.config/fastfetch -Os "${URL_BASE}/cli/fastfetch/config.jsonc"
 
