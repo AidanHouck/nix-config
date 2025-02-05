@@ -6,6 +6,13 @@ My personal NixOS config. Uses flakes and contains standard [NixOS](https://nixo
 
 A [Justfile](https://github.com/casey/just) is provided for ease of day-to-day usage. List all available commands with `just`.
 
+## Non-NixOS usage
+
+Basic dotfiles can be installed on any non-NixOS machine via the following:
+```bash
+bash <(curl -s https://raw.githubusercontent.com/AidanHouck/nix-config/refs/heads/main/scripts/nixless-install.sh)
+```
+
 ## New Machine Setup
 
 1. Set temp Hostname/Username
