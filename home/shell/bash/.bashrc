@@ -4,9 +4,11 @@ case $- in
 	*) return;;
 esac
 
-# Enable fzf autocompletion and keybinds
-export FZF_COMPLETION_TRIGGER='*'
-eval "$(fzf --bash)"
+if which fzf 1>/dev/null 2>&1; then
+	# Enable fzf autocompletion and keybinds
+	export FZF_COMPLETION_TRIGGER='*'
+	eval "$(fzf --bash)"
+fi
 
 # Pager options
 export PAGER='less'
