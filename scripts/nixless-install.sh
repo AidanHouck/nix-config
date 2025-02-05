@@ -9,14 +9,11 @@ if ! which curl 1>/dev/null 2>&1; then
 	exit 1
 fi
 
-# Make needed directories
-mkdir -p ~/.config/fastfetch ~/.config/.vim
-
 # Download files
 URL_BASE='https://raw.githubusercontent.com/AidanHouck/nix-config/refs/heads/main/home'
 
-curl --output-dir "~" -ZOs "${URL_BASE}/shell/bash/{.bashrc,.bash_aliases,.bash_profile}"
-curl --output-dir "~" -Os "${URL_BASE}/shell/cli/vim/.vimrc"
-curl --output-dir "~/.config/.vim" -Os "${URL_BASE}/shell/cli/vim/vim_bash"
-curl --output-dir "~/.config/fastfetch" -Os "${URL_BASE}/shell/cli/fastfetch/config.jsonc"
+curl --create-dirs --output-dir "~" -ZOs "${URL_BASE}/shell/bash/{.bashrc,.bash_aliases,.bash_profile}"
+curl --create-dirs --output-dir "~" -Os "${URL_BASE}/shell/cli/vim/.vimrc"
+curl --create-dirs --output-dir "~/.config/.vim" -Os "${URL_BASE}/shell/cli/vim/vim_bash"
+curl --create-dirs --output-dir "~/.config/fastfetch" -Os "${URL_BASE}/shell/cli/fastfetch/config.jsonc"
 
