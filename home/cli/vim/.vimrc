@@ -100,7 +100,7 @@ set shiftwidth=4
 set softtabstop=4
 
 " show whitespace
-set list
+set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 
 " add line numbers
 set number
