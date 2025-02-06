@@ -14,7 +14,9 @@ fi
 export PAGER='less'
 export LESS='-FXRfM'
 # man->bat
-export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
+if ! which bat 1>/dev/null 2>&1; then
+	export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
+fi
 # Use default less -M prompt but add $MAN_PN at start
 export MANLESS='$MAN_PN ?f%f .?n?m(%T %i of %m) ..?ltlines %lt-%lb?L/%L. :byte %
 bB?s/%s. .?e(END) ?x- Next\: %x.:?pB%pB\%..%t'
