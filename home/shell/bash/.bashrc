@@ -68,6 +68,11 @@ case "$TERM" in
 		;;
 esac
 
+# If on kubernetes host update $PATH
+if [[ $HOSTNAME =~ kube-.* ]]; then
+	export PATH="/var/lib/rancher/rke2/bin:$PATH"
+fi
+
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
