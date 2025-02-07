@@ -22,6 +22,36 @@ in {
     ];
 
     programs.ssh.extraConfig = ''
+      # Docker Nodes
+      Host docker-1
+          HostName mveca-docker-01.mveca.org
+
+      Host docker-2
+          HostName mveca-docker-02.mveca.org
+
+      Host docker-3
+          HostName mveca-docker-03.mveca.org
+
+      Host docker-4
+          HostName mveca-docker-04.mveca.org
+
+      Host docker-5
+          HostName mveca-docker-05.mveca.org
+
+      Host docker-6
+          HostName mveca-docker-06.mveca.org
+
+      Host docker-test
+          HostName mveca-docker-test.mveca.org
+
+      Host docker-pb
+          HostName mesh-cp.mveca.org
+
+      Host docker-*
+          User houck.admin
+
+
+      # Kubernetes Nodes
       Host kube-server-01
           HostName kube-server-01.mveca.org
 
