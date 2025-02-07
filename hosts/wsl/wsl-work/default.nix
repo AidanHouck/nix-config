@@ -16,6 +16,8 @@ in {
     aidan.vars.hostname = hostname;
     wsl.wslConf.network.hostname = hostname;
 
+    aidan.modules.cli.kubectl.enable = true;
+
     # Host specific packages
     environment.systemPackages = with pkgs; [
       # TODO
