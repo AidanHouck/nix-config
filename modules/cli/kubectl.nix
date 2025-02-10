@@ -15,6 +15,7 @@
   config = lib.mkIf config.aidan.modules.cli.kubectl.enable {
     environment.systemPackages = with pkgs; [
       kubectl
+      kustomize
     ];
 
     sops.secrets."kubectl-config" = {
