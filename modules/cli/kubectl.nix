@@ -16,6 +16,7 @@
     environment.systemPackages = with pkgs; [
       kubectl
       kustomize
+      kompose
     ];
 
     sops.secrets."kubectl-config" = {
