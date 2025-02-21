@@ -47,6 +47,15 @@
     });
 
     nixosConfigurations = {
+      desktop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        system = "x86_64-linux";
+        modules = [
+          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
+          ./hosts/desktop
+        ];
+      };
+
       nixpi = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         system = "aarch64-linux";
@@ -89,6 +98,12 @@
     };
 
     homeConfigurations = {
+      "houck@desktop" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [./hosts/desktop/home.nix];
+      };
+
       "houck@nixpi" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
