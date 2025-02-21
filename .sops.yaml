@@ -3,6 +3,7 @@ keys:
   - &wsl-home age1c6jp48xjdjrsfqmr9afdr45fr7vlvqr9kyqztefjvhsn6jtg0vzsc28att
   - &wsl-work age1te7h62ngk56agqg8raq2le27rscuvvclwe3g906ka7wqarkwwaus7rnwh7
   - &router age18wafdhlw4dxxntdc6qdy9d9dj07hvpf6n8ym3atpq708nx9ycgtsfntz6m
+  - &desktop age19qsfqccwhu0ytvhkcaexym3jt0w7y8mknevklz7jfms2gm4krdmqrlc9rw
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
@@ -11,4 +12,5 @@ creation_rules:
         - *wsl-home
         - *wsl-work
         - *router
+        - *desktop
 
