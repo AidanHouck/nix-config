@@ -15,6 +15,39 @@ bash <(curl -s https://raw.githubusercontent.com/AidanHouck/nix-config/refs/head
 
 ## New Machine Setup
 
+0. If live booting on USB, setup partitioning and finish install.
+```
+# From https://nixos.org/manual/nixos/stable/#sec-installation-manual
+
+# Find primary storage device (e.g. sda or nvme0n1)
+# Replace future /dev/sda with /dev/thatdevice
+lsblk
+
+parted /dev/sda -- mklabel gpt
+parted /dev/sda -- mkpart root ext4 512MB -8GB
+parted /dev/sda -- mkpart swap linux-swap -8GB 100%
+parted /dev/sda -- mkpart ESP fat32 1MB 512MB
+parted /dev/sda -- set 3 esp on
+
+mkfs.ext4 -L nixos /dev/sda1
+mkswap -L swap /dev/sda2
+mkfs.fat -F 32 -n boot /dev/sda3
+
+mount /dev/disk/by-label/nixos /mnt
+mkdir -p /mnt/boot
+mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
+swapon /dev/sda2 # activate swap
+
+nixos-generate-config --root /mnt
+
+# Enable SSH
+vim /mnt/etc/nixos/configuration.nix
+
+nixos-install
+# if successful
+reboot
+```
+
 1. Set temp Hostname/Username
 ```bash
 sudo hostname <NEW HOSTNAME>
@@ -48,10 +81,12 @@ git push
 
 3. Clone Repo
 ```bash
-nix-shell -p git vim
+nix-shell -p git vim just alejandra
 git clone https://github.com/AidanHouck/nix-config ~/src/nix-config
 mkdir -p ~/.config/home-manager
 sudo mv /etc/nixos/flake.nix /etc/nixos/flake.nix.bak
+sudo mv /etc/nixos/configuration.nix /etc/nixos/configuration.nix.bak
+sudo mv /etc/nixos/hardware-configuration.nix /etc/nixos/hardware-configuration.nix.bak
 sudo mv ~/.config/home-manager/flake.nix ~/.config/home-manager/flake.nix.bak
 sudo ln -s ~/src/nix-config/flake.nix /etc/nixos/flake.nix
 sudo ln -s ~/src/nix-config/flake.nix ~/.config/home-manager/flake.nix
@@ -67,22 +102,25 @@ vim flake.nix
 # Add new host and home-manager profiles
 
 # Generate new hardware-configuration.nix if needed
-nixos-generate-config
-cp /etc/nixos/hardware-configuration.nix hosts/<hostname>/hardware-configuration.nix
+sudo nixos-generate-config
+sudo cp /etc/nixos/hardware-configuration.nix hosts/$(hostname)/hardware-configuration.nix
+sudo chown houck:users hosts/$(hostname)/hardware-configuration.nix
 ```
 
 5. Test build
 ```bash
+just fmt
 git add .
-nix flake test
-sudo nixos-rebuild build
+nix --extra-experimental-features "flakes nix-command" flake check
 
+# The build will fail due to mismatched sha256 on GitHub's
+# pubkey download. Update the expected hash and retry.
+vim modules/system/users.nix
+git add .
+
+sudo nixos-rebuild build
 # If succeeded
 rm result
-
-# The build may fail due to mismatched sha256 on GitHub's
-# pubkey download. Update the expected hash and rebuild.
-vim modules/nixos/system/users.nix
 ```
 
 6. Build and switch
