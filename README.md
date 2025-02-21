@@ -26,6 +26,9 @@ su houck
 2. Generate SSH (and age) keys
 ```bash
 ssh-keygen -t ed25519
+ip a
+
+# At this point you can SSH to the new machine for ease of copy/paste
 cat ~/.ssh/id_ed25519.pub
 # add to: https://github.com/settings/keys
 
