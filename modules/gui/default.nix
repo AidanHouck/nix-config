@@ -5,9 +5,6 @@
   ...
 }: {
   imports = [
-    ./system
-    ./network
-    ./cli
-    ./gui
+    ./i3.nix
   ];
 }
