@@ -1,13 +1,10 @@
 {
-  inputs,
+  pkgs,
   lib,
   config,
-  pkgs,
   ...
 }: {
   imports = [
-    ./cli
-    ./gui
-    ./shell
+    ./firefox.nix
   ];
 }

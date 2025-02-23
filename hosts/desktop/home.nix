@@ -14,5 +14,7 @@
     # TODO
   ];
 
+  aidan.home.gui.firefox.enable = true;
+
   home.stateVersion = "24.11";
 }
