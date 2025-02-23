@@ -22,7 +22,7 @@ in {
       # TODO
     ];
 
-    gui.i3.enable = true;
+    gui.xfce.enable = true;
 
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
