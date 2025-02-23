@@ -24,6 +24,7 @@ in {
 
     gui.xfce.enable = true;
     gui.steam.enable = true;
+    aidan.modules.system.smb-share.enable = true;
 
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;

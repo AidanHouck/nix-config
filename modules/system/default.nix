@@ -8,5 +8,6 @@
     ./ssh.nix
     ./sudo.nix
     ./users.nix
+    ./smb-share.nix
   ];
 }
