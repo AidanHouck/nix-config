@@ -15,6 +15,14 @@
 
   news.display = "silent";
 
+  # Allow unfree packages
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
+
   sops.defaultSopsFile = ./../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/houck/.config/sops/age/keys.txt";

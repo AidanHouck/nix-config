@@ -20,6 +20,9 @@
   };
 
   config = {
+    # Allow unfree packages
+    nixpkgs.config.allowUnfree = true;
+
     sops.defaultSopsFile = ../secrets/secrets.yaml;
     sops.defaultSopsFormat = "yaml";
     sops.age.keyFile = "/home/houck/.config/sops/age/keys.txt";
