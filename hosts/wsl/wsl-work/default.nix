@@ -74,6 +74,11 @@ in {
 
       Host kube-*
           User houck.admin
+
+      # Misc
+      Host secure-note
+          HostName secure-note.mveca.org
+          User houck.admin
     '';
 
     system.stateVersion = "24.05";
