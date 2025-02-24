@@ -4,16 +4,19 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.gui.discord;
+in {
   options = {
-    aidan.home.gui.discord.enable = lib.mkOption {
+    aidan.gui.discord.enable = mkOption {
       default = false;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables the discord app";
     };
   };
 
-  config = lib.mkIf config.aidan.home.gui.discord.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [
       discord
     ];

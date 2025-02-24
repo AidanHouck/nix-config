@@ -5,18 +5,20 @@
   pkgs,
   ...
 }: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.cli.vim;
   vimrcPath = "${config.home.homeDirectory}/src/nix-config/home/cli/vim/.vimrc";
   vimBashPath = "${config.home.homeDirectory}/src/nix-config/home/cli/vim/vim_bash";
 in {
   options = {
-    aidan.home.cli.vim.enable = lib.mkOption {
+    aidan.cli.vim.enable = mkOption {
       default = true;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables vim home-manager module";
     };
   };
 
-  config = lib.mkIf config.aidan.home.cli.vim.enable {
+  config = mkIf cfg.enable {
     programs.vim = {
       enable = true;
       extraConfig = ''

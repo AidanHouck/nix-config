@@ -4,16 +4,19 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.gui.bitwarden;
+in {
   options = {
-    aidan.home.gui.bitwarden.enable = lib.mkOption {
+    aidan.gui.bitwarden.enable = mkOption {
       default = false;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables the bitwarden password manager";
     };
   };
 
-  config = lib.mkIf config.aidan.home.gui.bitwarden.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [
       bitwarden-desktop
     ];

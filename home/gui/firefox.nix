@@ -4,16 +4,19 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.gui.firefox;
+in {
   options = {
-    aidan.home.gui.firefox.enable = lib.mkOption {
+    aidan.gui.firefox.enable = mkOption {
       default = false;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables the firefox browser";
     };
   };
 
-  config = lib.mkIf config.aidan.home.gui.firefox.enable {
+  config = mkIf cfg.enable {
     programs.firefox = {
       enable = true;
       profiles = {

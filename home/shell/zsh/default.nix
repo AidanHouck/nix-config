@@ -5,17 +5,19 @@
   pkgs,
   ...
 }: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.shell.zsh;
   zshrcPath = "${config.home.homeDirectory}/src/nix-config/home/shell/zsh/.zshrc";
 in {
   options = {
-    aidan.home.shell.zsh.enable = lib.mkOption {
+    aidan.shell.zsh.enable = mkOption {
       default = false;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables zsh home-manager module";
     };
   };
 
-  config = lib.mkIf config.aidan.home.shell.zsh.enable {
+  config = mkIf cfg.enable {
     programs.zsh = {
       enable = true;
     };

@@ -5,19 +5,21 @@
   pkgs,
   ...
 }: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.shell.bash;
   bashrcPath = "${config.home.homeDirectory}/src/nix-config/home/shell/bash/.bashrc";
   bash_profilePath = "${config.home.homeDirectory}/src/nix-config/home/shell/bash/.bash_profile";
   bash_aliasesPath = "${config.home.homeDirectory}/src/nix-config/home/shell/bash/.bash_aliases";
 in {
   options = {
-    aidan.home.shell.bash.enable = lib.mkOption {
+    aidan.shell.bash.enable = mkOption {
       default = true;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables bash home-manager module";
     };
   };
 
-  config = lib.mkIf config.aidan.home.shell.bash.enable {
+  config = mkIf cfg.enable {
     #programs.bash = {
     #  enable = true;
     #};

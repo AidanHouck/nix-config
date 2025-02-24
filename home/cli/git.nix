@@ -4,16 +4,19 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.cli.git;
+in {
   options = {
-    aidan.home.cli.git.enable = lib.mkOption {
+    aidan.cli.git.enable = mkOption {
       default = true;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables git/gh home-manager module";
     };
   };
 
-  config = lib.mkIf config.aidan.home.cli.git.enable {
+  config = mkIf cfg.enable {
     programs.git = {
       enable = true;
       userName = "Aidan Houck";
