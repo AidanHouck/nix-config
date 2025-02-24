@@ -139,6 +139,11 @@ list:
 # Miscellaneous #
 #################
 
+# Grep for 'TODO' anywhere in the repo
+[group('misc')]
+todo:
+	git grep -n TODO -- ':!modules/template.nix' ':!justfile'
+
 # Print project tree view
 [group('misc')]
 tree:
