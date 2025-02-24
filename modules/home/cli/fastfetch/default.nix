@@ -7,7 +7,6 @@
 }: let
   inherit (lib) mkIf mkOption types;
   cfg = config.aidan.cli.fastfetch;
-  fastfetchConfigPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/fastfetch/config.jsonc";
 in {
   options = {
     aidan.cli.fastfetch.enable = mkOption {
@@ -24,7 +23,7 @@ in {
 
     home.file = {
       ".config/fastfetch/config.jsonc" = {
-        source = config.lib.file.mkOutOfStoreSymlink fastfetchConfigPath;
+        source = config.lib.file.mkOutOfStoreSymlink ./config.jsonc;
       };
     };
   };

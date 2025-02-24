@@ -7,8 +7,6 @@
 }: let
   inherit (lib) mkIf mkOption types;
   cfg = config.aidan.cli.vim;
-  vimrcPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/vim/.vimrc";
-  vimBashPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/vim/vim_bash";
 in {
   options = {
     aidan.cli.vim.enable = mkOption {
@@ -32,10 +30,10 @@ in {
 
     home.file = {
       ".vimrc" = {
-        source = config.lib.file.mkOutOfStoreSymlink vimrcPath;
+        source = config.lib.file.mkOutOfStoreSymlink ./.vimrc;
       };
       ".vim/vim_bash" = {
-        source = config.lib.file.mkOutOfStoreSymlink vimBashPath;
+        source = config.lib.file.mkOutOfStoreSymlink ./vim_bash;
       };
     };
   };
