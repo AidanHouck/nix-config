@@ -51,6 +51,11 @@ in {
     # GitHub CLI for credential helper
     programs.gh = {
       enable = true;
+      settings.aliases = {
+        i = "issue";
+        is = "issue";
+        iss = "issue";
+      };
     };
 
     sops.secrets."gh-hosts.yml" = {

@@ -13,7 +13,24 @@ in {
       type = types.bool;
       description = "enables mounting LAN samba share";
     };
-    # TODO expose more options like fqdn and path
+
+    aidan.system.smb-share.server = mkOption {
+      default = "pve.lan.aidanhouck.com";
+      type = types.str;
+      description = "IP or FQDN of the server to connect to";
+    };
+
+    aidan.system.smb-share.share = mkOption {
+      default = "zfsshare";
+      type = types.str;
+      description = "Name of the share to mount";
+    };
+
+    aidan.system.smb-share.mount = mkOption {
+      default = "/mnt/zfs";
+      type = types.str;
+      description = "File path to mount the share to";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -28,8 +45,8 @@ in {
     };
 
     # Mount the share
-    fileSystems."/mnt/zfs" = {
-      device = "//pve.lan.aidanhouck.com/zfsshare/";
+    fileSystems."${cfg.mount}" = {
+      device = "//${cfg.server}/${cfg.share}/";
       fsType = "cifs";
       options = let
         automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users";
