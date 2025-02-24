@@ -3,16 +3,19 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.cli.kubectl;
+in {
   options = {
-    aidan.modules.cli.kubectl.enable = lib.mkOption {
+    aidan.cli.kubectl.enable = mkOption {
       default = false;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables kubectl";
     };
   };
 
-  config = lib.mkIf config.aidan.modules.cli.kubectl.enable {
+  config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       kubectl
       kustomize

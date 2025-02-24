@@ -16,12 +16,8 @@ in {
     aidan.vars.hostname = hostname;
     wsl.wslConf.network.hostname = hostname;
 
-    aidan.modules.cli.kubectl.enable = true;
-
-    # Host specific packages
-    environment.systemPackages = with pkgs; [
-      # TODO
-    ];
+    # Enable work-related profile options
+    aidan.profile.work = true;
 
     programs.ssh.extraConfig = ''
       # Docker Nodes
