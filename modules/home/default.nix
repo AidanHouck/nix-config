@@ -9,6 +9,8 @@
   cfg = config.aidan.profile;
 in {
   imports = [
+    ./../vars.nix # System-wide variables
+
     ./cli
     ./gui
     ./shell

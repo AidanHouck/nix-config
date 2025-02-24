@@ -7,9 +7,9 @@
 }: let
   inherit (lib) mkIf mkOption types;
   cfg = config.aidan.shell.bash;
-  bashrcPath = "${config.home.homeDirectory}/src/nix-config/home/shell/bash/.bashrc";
-  bash_profilePath = "${config.home.homeDirectory}/src/nix-config/home/shell/bash/.bash_profile";
-  bash_aliasesPath = "${config.home.homeDirectory}/src/nix-config/home/shell/bash/.bash_aliases";
+  bashrcPath = "${config.home.homeDirectory}/src/nix-config/modules/home/shell/bash/.bashrc";
+  bash_profilePath = "${config.home.homeDirectory}/src/nix-config/modules/home/shell/bash/.bash_profile";
+  bash_aliasesPath = "${config.home.homeDirectory}/src/nix-config/modules/home/shell/bash/.bash_aliases";
 in {
   options = {
     aidan.shell.bash.enable = mkOption {

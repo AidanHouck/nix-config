@@ -8,7 +8,7 @@
   cfg = config.aidan.profile;
 in {
   imports = [
-    ./vars.nix # System-wide variables
+    ./../vars.nix # System-wide variables
 
     ./system
     ./network

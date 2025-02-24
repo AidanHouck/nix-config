@@ -7,7 +7,7 @@
 }: let
   inherit (lib) mkIf mkOption types;
   cfg = config.aidan.shell.zsh;
-  zshrcPath = "${config.home.homeDirectory}/src/nix-config/home/shell/zsh/.zshrc";
+  zshrcPath = "${config.home.homeDirectory}/src/nix-config/modules/home/shell/zsh/.zshrc";
 in {
   options = {
     aidan.shell.zsh.enable = mkOption {

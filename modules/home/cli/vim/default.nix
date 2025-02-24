@@ -7,8 +7,8 @@
 }: let
   inherit (lib) mkIf mkOption types;
   cfg = config.aidan.cli.vim;
-  vimrcPath = "${config.home.homeDirectory}/src/nix-config/home/cli/vim/.vimrc";
-  vimBashPath = "${config.home.homeDirectory}/src/nix-config/home/cli/vim/vim_bash";
+  vimrcPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/vim/.vimrc";
+  vimBashPath = "${config.home.homeDirectory}/src/nix-config/modules/home/cli/vim/vim_bash";
 in {
   options = {
     aidan.cli.vim.enable = mkOption {
