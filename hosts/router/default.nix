@@ -15,7 +15,6 @@ in {
   ];
 
   config = {
-    aidan.modules.network.hostname.enable = true;
     aidan.vars.hostname = hostname;
 
     # Host specific packages

@@ -11,17 +11,10 @@
     ./../modules
   ];
 
-  # All system-wide config defined under `aidan.vars.x` scope
-  options = {
-    aidan.vars = lib.mkOption {
-      type = lib.types.attrs;
-      default = {};
-    };
-  };
-
   config = {
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
+    networking.hostName = config.aidan.vars.hostname;
 
     sops.defaultSopsFile = ../secrets/secrets.yaml;
     sops.defaultSopsFormat = "yaml";

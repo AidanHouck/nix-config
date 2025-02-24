@@ -3,29 +3,32 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.system.users;
+in {
   options = {
-    aidan.modules.system.users.enable = lib.mkOption {
+    aidan.system.users.enable = mkOption {
       default = true;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables user creation";
     };
 
-    aidan.modules.system.users.username = lib.mkOption {
-      default = "houck";
-      type = lib.types.str;
+    aidan.system.users.username = mkOption {
+      default = config.aidan.vars.username;
+      type = types.str;
       description = "username to create";
     };
   };
 
-  config = lib.mkIf config.aidan.modules.system.users.enable {
-    sops.secrets."${config.aidan.modules.system.users.username}_pass_hash".neededForUsers = true;
+  config = mkIf cfg.enable {
+    sops.secrets."${cfg.username}_pass_hash".neededForUsers = true;
 
     users = {
       mutableUsers = false;
-      users.${config.aidan.modules.system.users.username} = {
+      users.${cfg.username} = {
         isNormalUser = true;
-        hashedPasswordFile = config.sops.secrets."${config.aidan.modules.system.users.username}_pass_hash".path;
+        hashedPasswordFile = config.sops.secrets."${cfg.username}_pass_hash".path;
         extraGroups = ["wheel"]; # wheel for sudo
 
         # Fetch allowed public keys from GitHub

@@ -6,6 +6,5 @@
 }: {
   imports = [
     ./wlan.nix
-    ./hostname.nix
   ];
 }

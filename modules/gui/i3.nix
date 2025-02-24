@@ -3,16 +3,19 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.gui.i3;
+in {
   options = {
-    gui.i3.enable = lib.mkOption {
+    aidan.gui.i3.enable = mkOption {
       default = false;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables x+i3 window manager";
     };
   };
 
-  config = lib.mkIf config.gui.i3.enable {
+  config = mkIf cfg.enable {
     environment.pathsToLink = ["/libexec"];
 
     services.displayManager.defaultSession = "none+i3";

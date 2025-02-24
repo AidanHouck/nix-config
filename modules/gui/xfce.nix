@@ -3,16 +3,19 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.gui.xfce;
+in {
   options = {
-    gui.xfce.enable = lib.mkOption {
+    aidan.gui.xfce.enable = mkOption {
       default = false;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables xfce desktop environment";
     };
   };
 
-  config = lib.mkIf config.gui.xfce.enable {
+  config = mkIf cfg.enable {
     services.displayManager.defaultSession = "xfce";
     services.xserver = {
       enable = true;

@@ -3,16 +3,20 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.system.smb-share;
+in {
   options = {
-    aidan.modules.system.smb-share.enable = lib.mkOption {
+    aidan.system.smb-share.enable = mkOption {
       default = false;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables mounting LAN samba share";
     };
+    # TODO expose more options like fqdn and path
   };
 
-  config = lib.mkIf config.aidan.modules.system.smb-share.enable {
+  config = mkIf cfg.enable {
     # From https://nixos.wiki/wiki/Samba#Samba_Client
     environment.systemPackages = with pkgs; [
       cifs-utils
@@ -20,7 +24,7 @@
 
     # Expose /run/secrets/smb-secrets for credentials
     sops.secrets = {
-      smb-secrets.owner = "${config.aidan.modules.system.users.username}";
+      smb-secrets.owner = "${config.aidan.vars.username}";
     };
 
     # Mount the share

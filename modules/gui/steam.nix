@@ -3,16 +3,19 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.gui.steam;
+in {
   options = {
-    gui.steam.enable = lib.mkOption {
+    aidan.gui.steam.enable = mkOption {
       default = false;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables steam";
     };
   };
 
-  config = lib.mkIf config.gui.steam.enable {
+  config = mkIf cfg.enable {
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true; # Steam Remote Play

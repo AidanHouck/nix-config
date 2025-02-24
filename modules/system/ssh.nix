@@ -3,16 +3,19 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.system.ssh;
+in {
   options = {
-    aidan.modules.system.ssh.enable = lib.mkOption {
+    aidan.system.ssh.enable = mkOption {
       default = true;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables inbound ssh";
     };
   };
 
-  config = lib.mkIf config.aidan.modules.system.ssh.enable {
+  config = mkIf cfg.enable {
     services.openssh = {
       enable = true;
       settings = {

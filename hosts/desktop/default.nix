@@ -14,17 +14,15 @@ in {
   ];
 
   config = {
-    aidan.modules.network.hostname.enable = true;
     aidan.vars.hostname = hostname;
+
+    aidan.profile.home = true;
+    aidan.profile.gui = true;
 
     # Host specific packages
     environment.systemPackages = with pkgs; [
       # TODO
     ];
-
-    gui.xfce.enable = true;
-    gui.steam.enable = true;
-    aidan.modules.system.smb-share.enable = true;
 
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;

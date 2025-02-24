@@ -14,7 +14,8 @@ in {
 
   config = {
     aidan.vars.hostname = hostname;
-    wsl.wslConf.network.hostname = hostname;
+
+    aidan.profile.home = true;
 
     # Host specific packages
     environment.systemPackages = with pkgs; [

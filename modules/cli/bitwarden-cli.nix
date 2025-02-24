@@ -3,24 +3,27 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.cli.bitwarden-cli;
+in {
   options = {
-    cli.bitwarden-cli.enable = lib.mkOption {
+    aidan.cli.bitwarden-cli.enable = mkOption {
       default = true;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables bitwarden-cli";
     };
   };
 
-  config = lib.mkIf config.cli.bitwarden-cli.enable {
+  config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       bitwarden-cli
     ];
 
     sops.secrets = {
-      bitwarden-client_id.owner = "${config.aidan.modules.system.users.username}";
-      bitwarden-client_secret.owner = "${config.aidan.modules.system.users.username}";
-      bitwarden-master_pass.owner = "${config.aidan.modules.system.users.username}";
+      bitwarden-client_id.owner = "${config.aidan.vars.username}";
+      bitwarden-client_secret.owner = "${config.aidan.vars.username}";
+      bitwarden-master_pass.owner = "${config.aidan.vars.username}";
     };
 
     # https://github.com/bitwarden/clients/issues/6689#issuecomment-1787609205

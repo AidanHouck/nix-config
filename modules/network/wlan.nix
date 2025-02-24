@@ -3,16 +3,25 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.network.wlan;
+in {
   options = {
-    aidan.modules.network.wlan.enable = lib.mkOption {
+    aidan.network.wlan.enable = mkOption {
       default = false;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables wlan connection";
+    };
+
+    aidan.network.wlan.interface = mkOption {
+      default = "wlan0";
+      type = types.str;
+      description = "wireless network adapter interface name";
     };
   };
 
-  config = lib.mkIf config.aidan.modules.network.wlan.enable {
+  config = mkIf cfg.enable {
     # Setup wireless using SSID/PSK from SOPS file
     sops.secrets."wpa_supplicant.conf" = {
       owner = "root";
@@ -25,7 +34,7 @@
       wireless = {
         enable = true;
         allowAuxiliaryImperativeNetworks = true; # Read /etc/wpa_supplicant.conf
-        interfaces = [config.aidan.vars.interface];
+        interfaces = [cfg.interface];
       };
     };
   };

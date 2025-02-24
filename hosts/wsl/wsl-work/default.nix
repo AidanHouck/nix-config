@@ -14,9 +14,7 @@ in {
 
   config = {
     aidan.vars.hostname = hostname;
-    wsl.wslConf.network.hostname = hostname;
 
-    # Enable work-related profile options
     aidan.profile.work = true;
 
     programs.ssh.extraConfig = ''

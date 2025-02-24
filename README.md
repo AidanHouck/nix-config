@@ -2,6 +2,11 @@
 
 My personal NixOS config. Uses flakes and contains standard [NixOS](https://nixos.org/ "NixOS Website") as well as [home-manager](https://github.com/nix-community/home-manager "NixOS Home-Manager GitHub Repo").
 
+## Variables
+- `config.aidan.profile.x.enable`: Enables a set of modules (defined in `modules/default.nix`)
+- `config.aidan.vars.x`: System-wide custom variables (defined in `modules/vars.nix`)
+- `config.aidan.x.module.enable`: Enable or disable a specific module. Some have extra options
+
 ## Usage
 
 A [Justfile](https://github.com/casey/just) is provided for ease of day-to-day usage. List all available commands with `just`.

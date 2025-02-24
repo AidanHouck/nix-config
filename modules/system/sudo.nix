@@ -3,16 +3,19 @@
   lib,
   config,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkOption types;
+  cfg = config.aidan.system.sudo;
+in {
   options = {
-    aidan.modules.system.sudo.enable = lib.mkOption {
+    aidan.system.sudo.enable = mkOption {
       default = true;
-      type = lib.types.bool;
+      type = types.bool;
       description = "enables passwordless sudo";
     };
   };
 
-  config = lib.mkIf config.aidan.modules.system.sudo.enable {
+  config = mkIf cfg.enable {
     security.sudo.extraRules = [
       {
         groups = ["wheel"];

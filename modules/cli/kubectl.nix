@@ -23,10 +23,10 @@ in {
     ];
 
     sops.secrets."kubectl-config" = {
-      owner = "${config.aidan.modules.system.users.username}";
+      owner = "${config.aidan.vars.username}";
       group = "users";
       mode = "0400";
-      path = "/home/${config.aidan.modules.system.users.username}/.kube/config";
+      path = "/home/${config.aidan.vars.username}/.kube/config";
     };
   };
 }

@@ -8,6 +8,8 @@
   cfg = config.aidan;
 in {
   imports = [
+    ./vars.nix # System-wide variables
+
     ./system
     ./network
     ./cli
@@ -40,9 +42,12 @@ in {
       (mkIf cfg.profile.work {
         aidan.cli.kubectl.enable = mkDefault true;
       })
-      # TODO: Remove this and populate with real profiles
       (mkIf cfg.profile.home {
-        aidan.cli.kubectl.enable = mkDefault true;
+        aidan.system.smb-share.enable = mkDefault true;
+      })
+      (mkIf cfg.profile.gui {
+        aidan.gui.xfce.enable = mkDefault true;
+        aidan.gui.steam.enable = mkDefault true;
       })
     ];
 }
