@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkIf mkOption mkMerge mkDefault types;
-  cfg = config.aidan;
+  cfg = config.aidan.profile;
 in {
   imports = [
     ./vars.nix # System-wide variables
@@ -39,13 +39,13 @@ in {
   config =
     mkMerge
     [
-      (mkIf cfg.profile.work {
+      (mkIf cfg.work {
         aidan.cli.kubectl.enable = mkDefault true;
       })
-      (mkIf cfg.profile.home {
+      (mkIf cfg.home {
         aidan.system.smb-share.enable = mkDefault true;
       })
-      (mkIf cfg.profile.gui {
+      (mkIf cfg.gui {
         aidan.gui.xfce.enable = mkDefault true;
         aidan.gui.steam.enable = mkDefault true;
       })
