@@ -14,13 +14,25 @@ in {
       type = types.bool;
       description = "enables git/gh home-manager module";
     };
+
+    aidan.cli.git.displayName = mkOption {
+      default = "Aidan Houck";
+      type = types.str;
+      description = "Display name to use for commits";
+    };
+
+    aidan.cli.git.email = mkOption {
+      default = "${config.aidan.vars.githubAccount}@users.noreply.github.com";
+      type = types.str;
+      description = "Email to use for git commits";
+    };
   };
 
   config = mkIf cfg.enable {
     programs.git = {
       enable = true;
-      userName = "Aidan Houck";
-      userEmail = "AidanHouck@users.noreply.github.com";
+      userName = cfg.displayName;
+      userEmail = cfg.email;
       aliases = {
         undo = "reset HEAD~";
         last = "log -1 HEAD";
