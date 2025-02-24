@@ -16,5 +16,9 @@ in {
       type = types.str;
       default = "houck";
     };
+    aidan.vars.githubAccount = mkOption {
+      type = types.str;
+      default = "AidanHouck";
+    };
   };
 }

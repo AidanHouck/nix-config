@@ -19,6 +19,12 @@ in {
       type = types.str;
       description = "username to create";
     };
+
+    aidan.system.users.githubAccount = mkOption {
+      default = config.aidan.vars.githubAccount;
+      type = types.str;
+      description = "GitHub account to pull pubkeys from";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -35,7 +41,7 @@ in {
         # Ref: https://discourse.nixos.org/t/fetching-ssh-public-keys/12076/3
         openssh.authorizedKeys.keys = let
           authorizedKeys = pkgs.fetchurl {
-            url = "https://github.com/AidanHouck.keys";
+            url = "https://github.com/${cfg.githubAccount}.keys";
             sha256 = "sha256-z7Tuzn5jgYU9pEKZKhfkBqLj2ImY3JyLrH6uKdvicLg=";
           };
         in
