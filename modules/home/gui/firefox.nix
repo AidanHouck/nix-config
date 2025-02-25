@@ -29,6 +29,78 @@ in {
           # TODO: Setup options, search engine, etc.
           # search = { };
 
+          # Firefox settings
+          settings = {
+            # Appearance
+            "general.smoothScroll" = false;
+            "layout.css.always_underline_links" = true;
+            "layout.css.prefers-color-scheme.content-override" = 0; # prefer dark theme
+            "browser.tabs.hoverPreview.showThumbnails" = false;
+            "widget.gtk.overlay-scrollbars.enabled" = false;
+            "extensions.ui.dictionary.hidden" = true;
+            "extensions.ui.lastCategory" = "addons://list/extension";
+            "extensions.ui.locale.hidden" = true;
+            "extensions.ui.sitepermission.hidden" = true;
+
+            # New tab
+            "browser.newtabpage.enabled" = false;
+            "browser.urlbar.placeholderName.private" = "DuckDuckGo";
+            "browser.startup.homepage" = "chrome://browser/content/blanktab.html";
+            "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+            "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
+            "browser.newtabpage.activity-stream.feeds.topsites" = false;
+            "browser.newtabpage.activity-stream.showSearch" = false;
+
+            # Behavior
+            "extensions.autoDisableScopes" = 0; # Auto-enable extensions
+            "accessibility.browsewithcaret" = true;
+            "accessibility.typeaheadfind.flashBar" = 0;
+            "browser.aboutwelcome.didSeeFinalScreen" = true;
+            "browser.aboutConfig.showWarning" = false;
+            "browser.download.dir" = "/tmp/Downloads";
+            "browser.download.folderList" = 2;
+            "browser.bookmarks.restore_default_bookmarks" = false;
+            # https://support.mozilla.org/en-US/questions/1249212
+            "browser.startup.homepage_override.mstone" = "ignore";
+
+            # Autofill
+            "signon.autofillForms" = false;
+            "signon.autofillForms.autocompleteOff" = true;
+            "extensions.formautofill.addresses.enabled" = false;
+            "extensions.formautofill.creditCards.enabled" = false;
+
+            # Privacy
+            "datareporting.healthreport.uploadEnabled" = false;
+            "browser.ml.chat.enabled" = false; # No
+            "privacy.annotate_channels.strict_list.enabled" = true;
+            "privacy.bounceTrackingProtection.mode" = 1;
+            "privacy.donottrackheader.enabled" = false; # TODO link
+            "privacy.fingerprintingProtection" = true;
+            "privacy.globalprivacycontrol.enabled" = true;
+            "privacy.globalprivacycontrol.was_ever_enabled" = true;
+            "privacy.query_stripping.enabled" = true;
+            "privacy.query_stripping.enabled.pbmode" = true;
+            "privacy.trackingprotection.emailtracking.enabled" = true;
+            "privacy.trackingprotection.enabled" = true;
+            "privacy.trackingprotection.socialtracking.enabled" = true;
+            "signon.management.page.breach-alerts.enabled" = false;
+            "signon.rememberSignons" = false;
+
+            # Security
+            "browser.contentblocking.category" = "strict";
+            "dom.security.https_only_mode_pbm" = true;
+            "network.cookie.cookieBehavior.optInPartitioning" = true;
+            "network.dns.disablePrefetch" = true;
+            "network.http.referer.disallowCrossSiteRelaxingDefault.top_navigation" = true;
+            "network.http.speculative-parallel-limit" = 0;
+            "network.predictor.enabled" = false;
+            "network.prefetch-next" = false;
+            "network.proxy.type" = 0;
+            "extensions.webcompat.enable_shims" = true;
+            "extensions.webcompat.perform_injections" = true;
+            "extensions.webcompat.perform_ua_overrides" = true;
+          };
+
           # Setup extensions: https://gitlab.com/rycee/nur-expressions/-/tree/master
           extensions = with pkgs.nur.repos.rycee.firefox-addons; [
             ublock-origin
