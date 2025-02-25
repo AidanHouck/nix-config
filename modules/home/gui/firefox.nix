@@ -113,11 +113,12 @@ in {
             "extensions.formautofill.creditCards.enabled" = false;
 
             # Privacy
+            # TODO: https://amiunique.org/fingerprint
             "datareporting.healthreport.uploadEnabled" = false;
             "browser.ml.chat.enabled" = false; # No
             "privacy.annotate_channels.strict_list.enabled" = true;
             "privacy.bounceTrackingProtection.mode" = 1;
-            "privacy.donottrackheader.enabled" = false; # TODO link
+            "privacy.donottrackheader.enabled" = true;
             "privacy.fingerprintingProtection" = true;
             "privacy.globalprivacycontrol.enabled" = true;
             "privacy.globalprivacycontrol.was_ever_enabled" = true;
