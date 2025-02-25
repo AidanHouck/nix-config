@@ -9,12 +9,14 @@
     ./../home-common.nix
   ];
 
-  config.aidan.profile.gui = true;
+  config = {
+    aidan.profile.gui = true;
 
-  # Packages for this host only
-  home.packages = with pkgs; [
-    # TODO
-  ];
+    # Packages for this host only
+    home.packages = with pkgs; [
+      # TODO
+    ];
 
-  home.stateVersion = "24.11";
+    home.stateVersion = "24.11";
+  };
 }

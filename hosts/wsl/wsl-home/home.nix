@@ -9,10 +9,12 @@
     ./../../home-common.nix
   ];
 
-  # Packages for this host only
-  home.packages = with pkgs; [
-    # TODO
-  ];
+  config = {
+    # Packages for this host only
+    home.packages = with pkgs; [
+      # TODO
+    ];
 
-  home.stateVersion = "24.11";
+    home.stateVersion = "24.11";
+  };
 }
