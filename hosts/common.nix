@@ -12,15 +12,15 @@
   ];
 
   config = {
-    # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
     networking.hostName = config.aidan.vars.hostname;
 
-    sops.defaultSopsFile = ../secrets/secrets.yaml;
-    sops.defaultSopsFormat = "yaml";
-    sops.age.keyFile = "/home/houck/.config/sops/age/keys.txt";
+    time.timeZone = "America/New_York";
+    i18n.defaultLocale = "en_US.UTF-8";
 
-    # Enable Flakes
+    environment.variables.EDITOR = "vim";
+    environment.variables.GIT_EDITOR = "vim -c'norm! ggA'";
+
+    nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = ["nix-command" "flakes"];
 
     # Software important for maintaining the system
@@ -32,10 +32,10 @@
       just
       vim
     ];
-    environment.variables.EDITOR = "vim";
-    environment.variables.GIT_EDITOR = "vim -c'norm! ggA'";
 
-    boot.loader.systemd-boot.configurationLimit = 10;
+    sops.defaultSopsFile = ../secrets/secrets.yaml;
+    sops.defaultSopsFormat = "yaml";
+    sops.age.keyFile = "/home/houck/.config/sops/age/keys.txt";
 
     nix.gc = {
       automatic = true;
@@ -46,5 +46,7 @@
     # https://discourse.nixos.org/t/difference-between-nix-settings-auto-optimise-store-and-nix-optimise-automatic/25350
     nix.settings.auto-optimise-store = true;
     nix.optimise.automatic = true;
+
+    boot.loader.systemd-boot.configurationLimit = 10;
   };
 }
