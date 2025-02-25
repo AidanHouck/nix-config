@@ -26,8 +26,51 @@ in {
           name = "default";
           isDefault = true;
 
-          # TODO: Setup options, search engine, etc.
-          # search = { };
+          # Search Engines
+          search.engines = {
+            "Bing".metadata.hidden = true; # TODO: These don't seem to work
+            "Wikipedia (en)".metadata.hidden = true;
+            "Google".metadata.alias = "@g";
+
+            "MyNixOS" = {
+              urls = [{
+                template = "https://mynixos.com/search";
+                params = [
+                  { name = "q"; value = "{searchTerms}"; }
+                ];
+              }];
+
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@nix" ];
+            };
+
+            "Nix Packages" = {
+              urls = [{
+                template = "https://search.nixos.org/packages";
+                params = [
+                  { name = "type"; value = "packages"; }
+                  { name = "query"; value = "{searchTerms}"; }
+                ];
+              }];
+
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@np" ];
+            };
+
+            "Home Manager" = {
+              urls = [{
+                template = "https://home-manager-options.extranix.com";
+                params = [
+                  { name = "query"; value = "{searchTerms}"; }
+                ];
+              }];
+
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@hm" ];
+            };
+          };
+          search.force = true;
+          search.default = "DuckDuckGo";
 
           # Firefox settings
           settings = {
