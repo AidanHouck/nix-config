@@ -10,6 +10,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Community packages for Firefox extensions
+    nur.url = "github:nix-community/nur";
+
     # NixOS for WSL
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
@@ -101,7 +104,10 @@
       "houck@desktop" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [./hosts/desktop/home.nix];
+        modules = [
+          ./hosts/desktop/home.nix
+          {nixpkgs.overlays = [inputs.nur.overlays.default];}
+        ];
       };
 
       "houck@nixpi" = home-manager.lib.homeManagerConfiguration {

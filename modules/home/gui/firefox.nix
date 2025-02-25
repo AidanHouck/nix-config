@@ -25,12 +25,15 @@ in {
           id = 0;
           name = "default";
           isDefault = true;
+
           # TODO: Setup options, search engine, etc.
           # search = { };
-          #extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          #  ublock-origin
-          #  bitwarden
-          #];
+
+          # Setup extensions: https://gitlab.com/rycee/nur-expressions/-/tree/master
+          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+            ublock-origin
+            bitwarden
+          ];
         };
       };
     };
