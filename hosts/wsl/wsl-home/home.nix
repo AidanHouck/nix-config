@@ -10,6 +10,8 @@
   ];
 
   config = {
+    aidan.profile.home = true;
+
     # Packages for this host only
     home.packages = with pkgs; [
       # TODO

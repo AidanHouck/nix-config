@@ -22,6 +22,12 @@ in {
       type = types.bool;
       description = "enables all gui packages";
     };
+
+    aidan.profile.home = mkOption {
+      default = false;
+      type = types.bool;
+      description = "enables all packages that are only used at home";
+    };
   };
 
   config =
@@ -32,6 +38,9 @@ in {
         aidan.gui.discord.enable = mkDefault true;
         aidan.gui.bitwarden.enable = mkDefault true;
         aidan.gui.alacritty.enable = mkDefault true;
+      })
+      (mkIf cfg.home {
+        aidan.cli.ffmpeg.enable = mkDefault true;
       })
     ];
 }

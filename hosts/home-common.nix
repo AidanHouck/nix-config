@@ -45,7 +45,6 @@
 
     # Larger Utils
     #pandoc
-    #ffmpeg
 
     # Quality of Life
     fzf

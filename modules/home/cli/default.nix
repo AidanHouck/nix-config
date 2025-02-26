@@ -5,8 +5,10 @@
   ...
 }: {
   imports = [
-    ./git.nix
     ./vim
     ./fastfetch
+
+    ./git.nix
+    ./ffmpeg.nix
   ];
 }
