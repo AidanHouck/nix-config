@@ -41,7 +41,7 @@ in {
               }];
 
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = [ "@nix" ];
+              definedAliases = [ "@mynix" ];
             };
 
             "Nix Packages" = {
@@ -54,7 +54,7 @@ in {
               }];
 
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = [ "@np" ];
+              definedAliases = [ "@nixpkgs" ];
             };
 
             "Home Manager" = {
