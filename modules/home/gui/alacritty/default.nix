@@ -23,5 +23,10 @@ in {
     };
 
     # TODO: Append bash autocompletion: https://github.com/alacritty/alacritty/blob/master/INSTALL.md#bash
+    home.file = {
+      ".config/alacritty/alacritty.toml" = {
+        source = config.lib.file.mkOutOfStoreSymlink ./alacritty.toml;
+      };
+    };
   };
 }

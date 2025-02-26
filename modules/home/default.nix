@@ -31,7 +31,7 @@ in {
         aidan.gui.firefox.enable = mkDefault true;
         aidan.gui.discord.enable = mkDefault true;
         aidan.gui.bitwarden.enable = mkDefault true;
-        #aidan.gui.alacritty.enable = mkDefault true;
+        aidan.gui.alacritty.enable = mkDefault true;
       })
     ];
 }

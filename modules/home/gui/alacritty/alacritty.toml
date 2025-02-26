@@ -1,0 +1,16 @@
+[window]
+decorations = "Full"
+decorations_theme_variant = "Dark"
+padding.x = 10
+padding.y = 10
+
+[selection]
+# Auto-copy selection to clipboard
+save_to_clipboard = true
+
+[mouse]
+bindings = [
+	# RMB->Paste
+	{ mouse = "Right", action = "Paste" },
+]
+

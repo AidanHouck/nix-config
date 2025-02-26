@@ -5,9 +5,10 @@
   ...
 }: {
   imports = [
+    ./alacritty
+
     ./firefox.nix
     ./discord.nix
     ./bitwarden.nix
-    ./alacritty.nix
   ];
 }
