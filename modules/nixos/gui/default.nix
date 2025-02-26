@@ -9,5 +9,6 @@
     ./xfce.nix
     ./steam.nix
     ./awesome.nix
+    ./libratbag.nix
   ];
 }

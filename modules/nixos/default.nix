@@ -48,6 +48,7 @@ in {
       (mkIf cfg.gui {
         aidan.gui.xfce.enable = mkDefault true;
         aidan.gui.steam.enable = mkDefault true;
+        aidan.gui.libratbag.enable = mkDefault true;
       })
     ];
 }
