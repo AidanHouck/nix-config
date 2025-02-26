@@ -8,5 +8,6 @@
     ./i3.nix
     ./xfce.nix
     ./steam.nix
+    ./awesome.nix
   ];
 }
