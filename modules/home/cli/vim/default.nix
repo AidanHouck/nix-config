@@ -20,7 +20,7 @@ in {
     programs.vim = {
       enable = true;
       extraConfig = ''
-        source ~/.vimrc " Nix will only use its' auto-generated .vimrc by default.
+        source ~/.config/vim/.vimrc " Nix will only use its' auto-generated .vimrc by default.
       '';
       #plugins = with pkgs.vimPlugins; [
       #  vim-just
@@ -28,13 +28,9 @@ in {
       #];
     };
 
-    home.file = {
-      ".vimrc" = {
-        source = config.lib.file.mkOutOfStoreSymlink ./.vimrc;
-      };
-      ".vim/vim_bash" = {
-        source = config.lib.file.mkOutOfStoreSymlink ./vim_bash;
-      };
+    home.file = with config.lib.file; {
+      ".config/vim/.vimrc".source = mkOutOfStoreSymlink ./.vimrc;
+      ".config/vim/vim_bash".source = mkOutOfStoreSymlink ./vim_bash;
     };
   };
 }

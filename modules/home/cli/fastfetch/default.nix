@@ -21,10 +21,8 @@ in {
       enable = true;
     };
 
-    home.file = {
-      ".config/fastfetch/config.jsonc" = {
-        source = config.lib.file.mkOutOfStoreSymlink ./config.jsonc;
-      };
+    home.file = with config.lib.file; {
+      ".config/fastfetch/config.jsonc".source = mkOutOfStoreSymlink ./config.jsonc;
     };
   };
 }

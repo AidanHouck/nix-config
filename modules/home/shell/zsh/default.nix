@@ -21,10 +21,9 @@ in {
       enable = true;
     };
 
-    home.file = {
-      ".zshrc" = {
-        source = config.lib.file.mkOutOfStoreSymlink ./.zhsrc;
-      };
+    home.file = with config.lib.file; {
+      # TODO: Move to ~/.config
+      ".zshrc".source = mkOutOfStoreSymlink ./.zhsrc;
     };
   };
 }

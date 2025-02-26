@@ -17,20 +17,16 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # This causes issues with the module trying to setup it's own .bashrc, .bash_profile, etc
     #programs.bash = {
     #  enable = true;
     #};
 
-    home.file = {
-      ".bashrc" = {
-        source = config.lib.file.mkOutOfStoreSymlink ./.bashrc;
-      };
-      ".bash_profile" = {
-        source = config.lib.file.mkOutOfStoreSymlink ./.bash_profile;
-      };
-      ".bash_aliases" = {
-        source = config.lib.file.mkOutOfStoreSymlink ./.bash_aliases;
-      };
+    home.file = with config.lib.file; {
+      # TODO: Move this to .config/bash
+      ".bashrc".source = mkOutOfStoreSymlink ./.bashrc;
+      ".bash_profile".source = mkOutOfStoreSymlink ./.bash_profile;
+      ".bash_aliases".source = mkOutOfStoreSymlink ./.bash_aliases;
     };
   };
 }

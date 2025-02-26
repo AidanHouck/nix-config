@@ -13,6 +13,9 @@
   home.username = "houck";
   home.homeDirectory = "/home/houck";
 
+  xdg.enable = true;
+  home.preferXdgDirectories = true;
+
   news.display = "silent";
 
   # Allow unfree packages

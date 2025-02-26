@@ -37,7 +37,7 @@ nnoremap <F5> :!"%:p"<Enter>
 command! -nargs=* F5 :!"%:p" <args>
 
 " Load file when running commands via :!cmd
-let $BASH_ENV="~/.vim/vim_bash"
+let $BASH_ENV="~/.config/vim/vim_bash"
 
 " disable arrow keys
 inoremap <Down> <Nop>
