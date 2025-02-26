@@ -11,6 +11,7 @@ in {
   imports = [
     ../common.nix
     ./hardware-configuration.nix
+    ./drivers.nix
   ];
 
   config = {
