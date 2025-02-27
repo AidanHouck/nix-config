@@ -25,8 +25,9 @@ in {
       };
     };
 
-    environment.systemPackages = with pkgs.xfce; [
-      xfce4-clipman-plugin
+    environment.systemPackages = with pkgs; [
+      xfce.xfce4-clipman-plugin
+      hackneyed
     ];
 
     environment.xfce.excludePackages = with pkgs.xfce; [
