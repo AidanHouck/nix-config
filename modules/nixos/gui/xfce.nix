@@ -31,6 +31,7 @@ in {
 
     environment.xfce.excludePackages = with pkgs.xfce; [
       xfce4-notifyd
+      xfce4-terminal
     ];
   };
 }
