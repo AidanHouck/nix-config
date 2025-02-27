@@ -25,6 +25,10 @@ in {
       };
     };
 
+    environment.systemPackages = with pkgs.xfce; [
+      xfce4-clipman-plugin
+    ];
+
     environment.xfce.excludePackages = with pkgs.xfce; [
       xfce4-notifyd
     ];
