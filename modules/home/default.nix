@@ -41,6 +41,7 @@ in {
       })
       (mkIf cfg.home {
         aidan.cli.ffmpeg.enable = mkDefault true;
+        aidan.cli.weechat.enable = mkDefault true;
       })
     ];
 }

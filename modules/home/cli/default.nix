@@ -10,5 +10,6 @@
 
     ./git.nix
     ./ffmpeg.nix
+    ./weechat.nix
   ];
 }

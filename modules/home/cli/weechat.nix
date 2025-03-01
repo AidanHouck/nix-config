@@ -6,19 +6,19 @@
   ...
 }: let
   inherit (lib) mkIf mkOption types;
-  cfg = config.aidan.cli.ffmpeg;
+  cfg = config.aidan.cli.weechat;
 in {
   options = {
-    aidan.cli.ffmpeg.enable = mkOption {
+    aidan.cli.weechat.enable = mkOption {
       default = false;
       type = types.bool;
-      description = "enables ffmpeg";
+      description = "enables weechat";
     };
   };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      ffmpeg
+      weechat
     ];
   };
 }
