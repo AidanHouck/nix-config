@@ -164,12 +164,32 @@ in {
           };
 
           # Setup extensions: https://gitlab.com/rycee/nur-expressions/-/tree/master
+          # https://nur.nix-community.org/repos/rycee/
           extensions = with pkgs.nur.repos.rycee.firefox-addons; [
             ublock-origin
             bitwarden
+            youtube-shorts-block
+            skip-redirect
+            privacy-badger
           ];
         };
       };
+
+      # This might be a way to dynamically allow extensions in private windows,
+      # but it doesn't seem to work for me for some reason...
+      #policies = {
+      #  # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
+      #  # uBlock Origin
+      #  "uBlock0@raymondhill.net" = {
+      #    install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+      #    installation_mode = "forced_install";
+      #    permissions = ''
+      #      [
+      #        "internal:privateBrowsingAllowed"
+      #      ]
+      #    '';
+      #  };
+      #};
     };
   };
 }
