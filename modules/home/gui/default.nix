@@ -10,5 +10,6 @@
     ./firefox.nix
     ./discord.nix
     ./bitwarden.nix
+    ./libreoffice.nix
   ];
 }
