@@ -12,5 +12,6 @@
     ./bitwarden.nix
     ./libreoffice.nix
     ./pinta.nix
+    ./prusa-slicer.nix
   ];
 }
