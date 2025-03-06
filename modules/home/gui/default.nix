@@ -11,5 +11,6 @@
     ./discord.nix
     ./bitwarden.nix
     ./libreoffice.nix
+    ./pinta.nix
   ];
 }
