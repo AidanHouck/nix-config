@@ -34,17 +34,27 @@ in {
     mkMerge
     [
       (mkIf cfg.gui {
+        home.packages = with pkgs; [
+          discord
+          bitwarden-desktop
+
+          # Libre Office and spell check utilities
+          libreoffice-qt-still
+          hunspell
+          hunspellDicts.en_US
+
+          pinta # MS paint replacement
+          prusa-slicer # gcode slicer
+        ];
+
         aidan.gui.firefox.enable = mkDefault true;
-        aidan.gui.discord.enable = mkDefault true;
-        aidan.gui.bitwarden.enable = mkDefault true;
         aidan.gui.alacritty.enable = mkDefault true;
-        aidan.gui.libreoffice.enable = mkDefault true;
-        aidan.gui.pinta.enable = mkDefault true;
-        aidan.gui.prusa-slicer.enable = mkDefault true;
       })
       (mkIf cfg.home {
-        aidan.cli.ffmpeg.enable = mkDefault true;
-        aidan.cli.weechat.enable = mkDefault true;
+        home.packages = with pkgs; [
+          ffmpeg
+          weechat
+        ];
       })
     ];
 }

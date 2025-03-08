@@ -7,9 +7,6 @@
   imports = [
     ./vim
     ./fastfetch
-
     ./git.nix
-    ./ffmpeg.nix
-    ./weechat.nix
   ];
 }
