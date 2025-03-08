@@ -40,6 +40,7 @@ in {
         aidan.gui.alacritty.enable = mkDefault true;
         aidan.gui.libreoffice.enable = mkDefault true;
         aidan.gui.pinta.enable = mkDefault true;
+        aidan.gui.prusa-slicer.enable = mkDefault true;
       })
       (mkIf cfg.home {
         aidan.cli.ffmpeg.enable = mkDefault true;
