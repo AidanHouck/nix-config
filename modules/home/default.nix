@@ -38,9 +38,8 @@ in {
           discord
           bitwarden-desktop
 
-          # Libre Office and spell check utilities
           libreoffice-qt-still
-          hunspell
+          hunspell # spellcheck
           hunspellDicts.en_US
 
           pinta # MS paint replacement
@@ -53,7 +52,8 @@ in {
       (mkIf cfg.home {
         home.packages = with pkgs; [
           ffmpeg
-          weechat
+          weechat # irc client
+          lrcget # mass-download lyrics for music
         ];
       })
     ];
