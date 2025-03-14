@@ -3,6 +3,9 @@ import = [
 	"~/.config/alacritty/iterm.toml"
 ]
 
+[font]
+size = 16
+
 [window]
 decorations = "Full"
 decorations_theme_variant = "Dark"
