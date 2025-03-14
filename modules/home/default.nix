@@ -42,6 +42,7 @@ in {
           hunspell # spellcheck
           hunspellDicts.en_US
 
+          tauon # music player
           pinta # MS paint replacement
           prusa-slicer # gcode slicer
         ];
