@@ -21,74 +21,75 @@ in {
       enable = true;
       profiles = {
         default = {
-          # TODO: Possibly setup mozilla account
           id = 0;
           name = "default";
           isDefault = true;
 
           # Search Engines
-          search.engines = {
-            "Bing".metadata.hidden = true; # TODO: These don't seem to work
-            "Wikipedia (en)".metadata.hidden = true;
-            "Google".metadata.alias = "@g";
+          search = {
+            #force = true; # Avoid overwriting "This time, search with..." setting.
+                           # idk how to kill it programmatically they removed "browser.urlbar.oneOffSearches"
+            default = "DuckDuckGo";
+            engines = {
+              "Bing".metadata.hidden = true; # TODO: These don't seem to work
+              "Wikipedia (en)".metadata.hidden = true;
 
-            "MyNixOS" = {
-              urls = [
-                {
-                  template = "https://mynixos.com/search";
-                  params = [
-                    {
-                      name = "q";
-                      value = "{searchTerms}";
-                    }
-                  ];
-                }
-              ];
+              "MyNixOS" = {
+                urls = [
+                  {
+                    template = "https://mynixos.com/search";
+                    params = [
+                      {
+                        name = "q";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
 
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = ["@mynix"];
-            };
+                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                definedAliases = ["@mynix"];
+              };
 
-            "Nix Packages" = {
-              urls = [
-                {
-                  template = "https://search.nixos.org/packages";
-                  params = [
-                    {
-                      name = "type";
-                      value = "packages";
-                    }
-                    {
-                      name = "query";
-                      value = "{searchTerms}";
-                    }
-                  ];
-                }
-              ];
+              "Nix Packages" = {
+                urls = [
+                  {
+                    template = "https://search.nixos.org/packages";
+                    params = [
+                      {
+                        name = "type";
+                        value = "packages";
+                      }
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
 
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = ["@nixpkgs"];
-            };
+                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                definedAliases = ["@nixpkgs"];
+              };
 
-            "Home Manager" = {
-              urls = [
-                {
-                  template = "https://home-manager-options.extranix.com";
-                  params = [
-                    {
-                      name = "query";
-                      value = "{searchTerms}";
-                    }
-                  ];
-                }
-              ];
+              "Home Manager" = {
+                urls = [
+                  {
+                    template = "https://home-manager-options.extranix.com";
+                    params = [
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
 
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = ["@hm"];
+                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                definedAliases = ["@hm"];
+              };
             };
           };
-          search.force = true;
-          search.default = "DuckDuckGo";
 
           # Firefox settings
           settings = {
