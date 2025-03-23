@@ -43,6 +43,7 @@ in {
           hunspellDicts.en_US
 
           tauon # music player
+          mpv # media player
           pinta # MS paint replacement
           prusa-slicer # gcode slicer
         ];
