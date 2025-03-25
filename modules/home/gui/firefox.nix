@@ -27,8 +27,9 @@ in {
 
           # Search Engines
           search = {
-            #force = true; # Avoid overwriting "This time, search with..." setting.
-                           # idk how to kill it programmatically they removed "browser.urlbar.oneOffSearches"
+            force = true; # This should be `true` so we fully wipe firefox every `just home`.
+                          # idk how to kill "This time, search with..." popup programmatically
+                          # so it's a bit annoying. mozilla removed "browser.urlbar.oneOffSearches"
             default = "DuckDuckGo";
             engines = {
               "Bing".metadata.hidden = true; # TODO: These don't seem to work
