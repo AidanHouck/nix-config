@@ -44,7 +44,9 @@ in {
 
           tauon # music player
           mpv # media player
+          koreader # ebook reader
           pinta # MS paint replacement
+
           prusa-slicer # gcode slicer
         ];
 
