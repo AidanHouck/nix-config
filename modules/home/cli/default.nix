@@ -8,5 +8,6 @@
     ./vim
     ./fastfetch
     ./git.nix
+    ./ranger.nix
   ];
 }
