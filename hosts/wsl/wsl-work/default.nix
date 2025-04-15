@@ -17,6 +17,11 @@ in {
 
     aidan.profile.work = true;
 
+    fileSystems."/mnt/o" = {
+      device = "O:";
+      fsType = "drvfs";
+    };
+
     programs.ssh.extraConfig = ''
       # Docker Nodes
       Host docker-1
