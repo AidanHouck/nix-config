@@ -40,6 +40,7 @@
     screen
     dos2unix
     file
+    unzip
     #binutils # strings
     #pngcheck
 
