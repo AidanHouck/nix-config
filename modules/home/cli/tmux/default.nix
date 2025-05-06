@@ -26,7 +26,7 @@ in {
 
     home.file = with config.lib.file; {
       ".config/tmux/tmux-nix.conf".source = mkOutOfStoreSymlink ./tmux-nix.conf;
-      ".config/tmux/tmux-help".source = mkOutOfStoreSymlink ./tmux-help.sh;
+      ".config/tmux/tmux-help.sh".source = mkOutOfStoreSymlink ./tmux-help.sh;
     };
   };
 }
