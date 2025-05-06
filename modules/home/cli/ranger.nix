@@ -14,7 +14,6 @@ in {
       type = types.bool;
       description = "enables ranger file manager";
     };
-
   };
 
   config = mkIf cfg.enable {
