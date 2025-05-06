@@ -34,6 +34,7 @@
   home.packages = with pkgs; [
     # Basic Utils
     bat
+    ripgrep
     tldr
     tree
     bc

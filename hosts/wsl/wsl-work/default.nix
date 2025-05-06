@@ -32,6 +32,9 @@ in {
     };
 
     programs.ssh.extraConfig = ''
+      # Allow unknown fingerprints
+      StrictHostKeyChecking accept-new
+
       # Docker Nodes
       Host docker-1
           HostName mveca-docker-01.mveca.org
