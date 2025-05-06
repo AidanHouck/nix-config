@@ -20,6 +20,7 @@ in {
     programs.tmux = {
       enable = true;
       clock24 = true;
+      keyMode = "vi";
       terminal = "screen-256color";
       extraConfig = "source-file ~/.config/tmux/tmux-nix.conf";
     };
