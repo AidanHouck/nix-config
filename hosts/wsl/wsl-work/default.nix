@@ -20,6 +20,15 @@ in {
     fileSystems."/mnt/o" = {
       device = "O:";
       fsType = "drvfs";
+      options = [
+        "metadata"
+        "rw"
+        "noatime"
+        "uid=1001"
+        "gid=100"
+        "umask=22"
+        "fmask=11"
+      ];
     };
 
     programs.ssh.extraConfig = ''
@@ -50,7 +59,6 @@ in {
 
       Host docker-*
           User houck.admin
-
 
       # Kubernetes Nodes
       Host kube-server-01
