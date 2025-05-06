@@ -7,6 +7,7 @@
   imports = [
     ./vim
     ./fastfetch
+    ./tmux
     ./git.nix
     ./ranger.nix
   ];
