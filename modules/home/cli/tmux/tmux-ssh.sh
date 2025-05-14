@@ -15,6 +15,6 @@ if [[ $result ]]; then
 	logname="${log_dir}${district}/${hostname}_${ip}-$(date +%Y-%m-%d-%H%M%S).log"
 	mkdir -p "${log_dir}${district}"
 
-	tmux new-window -n "$hostname" "bash ${ssh_dir}${result} | tee $logname"
+	tmux new-window -n "$hostname" "bash -c '$(sed "s/DSL_LAST/houck/g" "${ssh_dir}${result}")' | tee '$logname'"
 fi
 
