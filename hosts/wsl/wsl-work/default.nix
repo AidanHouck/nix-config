@@ -35,6 +35,9 @@ in {
       # Allow unknown fingerprints
       StrictHostKeyChecking accept-new
 
+      # Always try RSA pubkey because old Cisco switches
+      PubkeyAcceptedKeyTypes +ssh-rsa
+
       # Docker Nodes
       Host docker-1
           HostName mveca-docker-01.mveca.org
