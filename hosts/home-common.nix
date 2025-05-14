@@ -53,6 +53,7 @@
     shellcheck
 
     # Networking Utils
+    inetutils # telnet
     wget
     dig
     traceroute
