@@ -20,7 +20,7 @@ if [[ $result ]]; then
 		cat '${ssh_dir}${result}' | tee -a '$logname'; \
 		bash -c '$( \
 			sed "s/DSL_LAST/houck/g" "${ssh_dir}${result}" \
-		)' | tee -a '$logname' \
+		)' | tee -a '$logname'; read \
 		"
 fi
 
