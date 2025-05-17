@@ -57,6 +57,7 @@ in {
         home.packages = with pkgs; [
           ffmpeg
           wine
+          prismlauncher # minecraft client
           weechat # irc client
           lrcget # mass-download lyrics for music
         ];
