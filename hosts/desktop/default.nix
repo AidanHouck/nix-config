@@ -20,6 +20,8 @@ in {
     aidan.profile.home = true;
     aidan.profile.gui = true;
 
+    services.libinput.mouse.middleEmulation = false;
+
     # Host specific packages
     environment.systemPackages = with pkgs; [
       # TODO
