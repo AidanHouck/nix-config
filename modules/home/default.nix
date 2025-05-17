@@ -56,6 +56,7 @@ in {
       (mkIf cfg.home {
         home.packages = with pkgs; [
           ffmpeg
+          wine
           weechat # irc client
           lrcget # mass-download lyrics for music
         ];
