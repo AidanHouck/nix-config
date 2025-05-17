@@ -28,6 +28,14 @@
     options = ["fmask=0077" "dmask=0077"];
   };
 
+  # Windows HDD mount as read-only
+  boot.supportedFilesystems = ["ntfs"];
+  fileSystems."/mnt/c" = {
+    device = "/dev/disk/by-uuid/DF42F21A5C371AB4";
+    fsType = "ntfs-3g";
+    options = ["ro" "uid=1000"];
+  };
+
   swapDevices = [
     {device = "/dev/disk/by-uuid/defa5a97-f4af-4331-aca3-09dd7e153f72";}
   ];
