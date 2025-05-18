@@ -28,11 +28,12 @@ in {
     environment.systemPackages = with pkgs; [
       xfce.xfce4-clipman-plugin
       hackneyed
+      flameshot # screenshot program
     ];
 
     environment.xfce.excludePackages = with pkgs.xfce; [
-      xfce4-notifyd
       xfce4-terminal
+      xfce4-screenshooter
     ];
   };
 }
