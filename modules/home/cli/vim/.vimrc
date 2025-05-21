@@ -99,8 +99,8 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-" show whitespace
-set list listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+" show whitespace characters
+set list listchars=eol:·,tab:>\ ,trail:-,extends:>,precedes:<,multispace:.,nbsp:+
 
 " add line numbers
 set number
@@ -119,6 +119,7 @@ set ttimeoutlen=100     " wait up to 100ms after Esc for special key
 " color
 set background=dark
 color desert
+highlight NonText ctermbg=NONE " disable bg square on eol dots
 
 """"""""""""""""""""""""
 " Plugin Configuration "
