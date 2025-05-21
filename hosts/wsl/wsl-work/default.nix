@@ -38,6 +38,9 @@ in {
       # Always try RSA pubkey because old Cisco switches
       PubkeyAcceptedKeyTypes +ssh-rsa
 
+      # Raise default auth retries
+      NumberOfPasswordPrompts 5
+
       # Docker Nodes
       Host docker-1
           HostName mveca-docker-01.mveca.org
