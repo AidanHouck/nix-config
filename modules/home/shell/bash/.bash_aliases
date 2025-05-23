@@ -17,6 +17,13 @@ alias bat="bat -n"
 alias catb="bat"
 alias gistlist="gh gist list -L 9999"
 
+# Quick alias for ssh using old crypto
+alias ssha="\
+ssh -oPreferredAuthentications=keyboard-interactive \
+-oKexAlgorithms=+diffie-hellman-group1-sha1,diffie-hellman-group14-sha1 \
+-oHostKeyAlgorithms=+ssh-rsa \
+-oCiphers=+aes256-cbc"
+
 # Git operations
 alias gad="git add"
 alias gap="git add -p"
