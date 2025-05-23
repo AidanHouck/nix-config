@@ -121,6 +121,15 @@ set background=dark
 color desert
 highlight NonText ctermbg=NONE " disable bg square on eol dots
 
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
+
 """"""""""""""""""""""""
 " Plugin Configuration "
 """"""""""""""""""""""""
