@@ -16,6 +16,8 @@ alias sc='shellcheck'
 alias bat="bat -n"
 alias catb="bat"
 alias gistlist="gh gist list -L 9999"
+alias upper="tr '[:lower:]' '[:upper:]'"
+alias lower="tr '[:upper:]' '[:lower:]'"
 
 # Quick alias for ssh using old crypto
 alias ssha="\
