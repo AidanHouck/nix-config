@@ -14,8 +14,7 @@ menu () {
 		case "$choice" in
 		  1|r ) ssh;;
 		  2|c ) copy;;
-		  3|q ) exit;;
-		  * ) read -rp "Invalid selection. (1/2/3) " choice;;
+		  ""|3|q ) finish=1; exit;;
 		esac
 	done
 }
