@@ -21,7 +21,7 @@ in {
       enable = true;
       clock24 = true;
       keyMode = "vi";
-      newSession = true;
+      newSession = false;
       terminal = "screen-256color";
       extraConfig = "source-file ~/.config/tmux/tmux-nix.conf";
     };
