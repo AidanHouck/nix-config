@@ -30,10 +30,10 @@ in {
             force = true; # This should be `true` so we fully wipe firefox every `just home`.
             # idk how to kill "This time, search with..." popup programmatically
             # so it's a bit annoying. mozilla removed "browser.urlbar.oneOffSearches"
-            default = "DuckDuckGo";
+            default = "ddg";
             engines = {
-              "Bing".metadata.hidden = true; # TODO: These don't seem to work
-              "Wikipedia (en)".metadata.hidden = true;
+              "bing".metadata.hidden = true; # TODO: These don't seem to work
+              "wikipedia".metadata.hidden = true;
 
               "MyNixOS" = {
                 urls = [
@@ -167,7 +167,7 @@ in {
 
           # Setup extensions: https://gitlab.com/rycee/nur-expressions/-/tree/master
           # https://nur.nix-community.org/repos/rycee/
-          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
             ublock-origin
             bitwarden
             youtube-shorts-block
