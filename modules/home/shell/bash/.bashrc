@@ -56,10 +56,10 @@ fi
 
 prompt=
 if [ "$color_prompt" = yes ]; then
-	prompt='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+	prompt='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]'${USER:0:1}'@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 	PS1="$prompt"
 else
-	prompt='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+	prompt='${debian_chroot:+($debian_chroot)}'${USER:0:1}'@\h:\w\$ '
 	PS1="$prompt"
 fi
 
@@ -72,7 +72,7 @@ alias prompt_basic="PS1='\$ '"
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 	xterm*|rxvt*)
-		PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+		PS1="\[\e]0;${debian_chroot:+($debian_chroot)}${USER:0:1}@\h: \w\a\]$PS1"
 		;;
 	*)
 		;;
