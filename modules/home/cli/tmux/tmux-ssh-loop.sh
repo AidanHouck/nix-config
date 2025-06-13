@@ -2,6 +2,7 @@
 result="$1"
 logname="$2"
 ssh_dir="$3"
+user="$4"
 
 menu () {
 	echo "Connect has terminated. Select an option to continue."
@@ -22,7 +23,7 @@ menu () {
 ssh () {
 	echo "${result}" | tee -a "$logname"
 	tee -a "$logname" < "${ssh_dir}${result}"
-	bash -c "$(sed 's/DSL_LAST/houck/g' "${ssh_dir}${result}")" | tee -a "$logname"
+	bash -c "$(sed "s/DSL_LAST/${user}/g" "${ssh_dir}${result}")" | tee -a "$logname"
 }
 
 copy () {

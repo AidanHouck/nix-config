@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-share_base='/mnt/o/Aidan'
-ssh_dir="${share_base}/ssh.d/"
-log_dir="${share_base}/puttylogs/"
+user="houck"
+ssh_dir="/mnt/o/Aidan/ssh.d/"
+log_dir="/mnt/o/Aidan/puttylogs/"
 
 connection_ip_regex='([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)'
 connection_host_regex='((?:[a-zA-Z0-9\-]+[.])*[a-zA-Z0-9]+[.](?:com|org))'
@@ -24,6 +24,6 @@ if [[ $result ]]; then
 	mkdir -p "${log_dir}${district}"
 
 	tmux new-window -n "$hostname" \
-		"~/.config/tmux/tmux-ssh-loop.sh '$result' '$logname' '$ssh_dir'"
+		"~/.config/tmux/tmux-ssh-loop.sh '$result' '$logname' '$ssh_dir' '$user'"
 fi
 
