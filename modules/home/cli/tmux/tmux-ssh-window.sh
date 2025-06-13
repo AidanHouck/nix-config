@@ -23,6 +23,7 @@ if [[ $result ]]; then
 
 	mkdir -p "${log_dir}${district}"
 
-	tmux new-window -n "$hostname" "~/.config/tmux/tmux-ssh-loop.sh '$result' '$logname' '$ssh_dir'"
+	tmux new-window -n "$hostname" \
+		"~/.config/tmux/tmux-ssh-loop.sh '$result' '$logname' '$ssh_dir'"
 fi
 
