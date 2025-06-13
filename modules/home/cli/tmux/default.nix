@@ -29,7 +29,8 @@ in {
     home.file = with config.lib.file; {
       ".config/tmux/tmux-nix.conf".source = mkOutOfStoreSymlink ./tmux-nix.conf;
       ".config/tmux/tmux-help.sh".source = mkOutOfStoreSymlink ./tmux-help.sh;
-      ".config/tmux/tmux-ssh.sh".source = mkOutOfStoreSymlink ./tmux-ssh.sh;
+      ".config/tmux/tmux-ssh-window.sh".source = mkOutOfStoreSymlink ./tmux-ssh-window.sh;
+      ".config/tmux/tmux-ssh-loop.sh".source = mkOutOfStoreSymlink ./tmux-ssh-loop.sh;
     };
   };
 }

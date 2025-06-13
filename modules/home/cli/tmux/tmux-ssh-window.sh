@@ -23,12 +23,6 @@ if [[ $result ]]; then
 
 	mkdir -p "${log_dir}${district}"
 
-	tmux new-window -n "$hostname" "\
-		echo '${result}' | tee -a '$logname'; \
-		cat '${ssh_dir}${result}' | tee -a '$logname'; \
-		bash -c '$( \
-			sed "s/DSL_LAST/houck/g" "${ssh_dir}${result}" \
-		)' | tee -a '$logname'; read \
-		"
+	tmux new-window -n "$hostname" "~/.config/tmux/tmux-ssh-loop.sh '$result' '$logname' '$ssh_dir'"
 fi
 
