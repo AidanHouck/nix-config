@@ -59,6 +59,7 @@ in {
           wine
           winetricks
           prismlauncher # minecraft client
+          clonehero # plastic guitar game
           weechat # irc client
           lrcget # mass-download lyrics for music
         ];
