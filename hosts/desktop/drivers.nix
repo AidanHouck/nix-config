@@ -15,7 +15,7 @@
     modesetting.enable = true;
     powerManagement.enable = false; # May need enabled if sleep/suspend issues
     powerManagement.finegrained = false;
-    open = false; # Only needed past Turing (RTX 20-Series) cards
+    open = true; # Only needed past Turing (RTX 20-Series) cards
     nvidiaSettings = true; # `nvidia-settings` menu
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
