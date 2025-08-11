@@ -7,7 +7,7 @@ connection_ip_regex='([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)'
 connection_host_regex='((?:[a-zA-Z0-9\-]+[.])*[a-zA-Z0-9]+[.](?:com|org))'
 
 pushd "$ssh_dir" 1>/dev/null || exit
-result=$(rg -P -e "$connection_ip_regex" -e "$connection_host_regex" -or '$1$2' | fzf -m | cut -d':' -f1)
+result=$(rg -P -e "$connection_ip_regex" -e "$connection_host_regex" -or '$1$2' | fzf -m --bind 'ctrl-a:select-all' --bind 'ctrl-space:toggle+up' | cut -d':' -f1)
 popd 1>/dev/null || exit
 
 if [[ ! $result ]]; then
