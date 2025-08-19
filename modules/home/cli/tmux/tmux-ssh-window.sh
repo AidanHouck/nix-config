@@ -41,15 +41,16 @@ while IFS= read -r line; do
 		# Subsequent run, split window
 		tmux split-window \
 			"~/.config/tmux/tmux-ssh-loop.sh '$line' '$logname' '$ssh_dir' '$user'"
+
+		# Set evenly-spaced tile layout
+		tmux select-layout tiled
+
 	fi
 
 	i=$((i+1))
 done <<< "$result"
 
 if [[ $multiple_results ]]; then
-	# Set evenly-spaced tile layout
-	tmux select-layout tiled
-
 	# Sync keyboard input to all panes
 	tmux set-window-option synchronize-panes on
 fi
