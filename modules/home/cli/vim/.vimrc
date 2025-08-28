@@ -80,8 +80,13 @@ set mouse=a
 syntax on
 let c_comment_strings=1
 
-" enable command autocomplete menu on tab
+" enable autocomplete menu on tab
 set wildmenu
+set wildmode=longest:full,full " first tab fill longest unique match, next tab fill first result then cycle through results
+set wildoptions+=pum " Popup menu
+
+" List of globs to avoid autocompleting
+set wildignore+=*.png,*.jpg,*.pdf,*.docx,*.xlsx,*.gif,*.zip,*.db,*.exe,*.pcap,*.pcapng,*.msg,*.PNG,*.pptx,*.SEQ,*.mrc,*.lnk,*.rpx,*.scexe,*.mp3,*.mp4,*.wav,*.jpeg,*.tiff,*.pst,*.jxl,*.webp,*.webm,*.m4a,*.ogg,*.flac,*.opus
 
 " search settings
 set hlsearch
