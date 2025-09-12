@@ -56,10 +56,12 @@ fi
 
 prompt=
 if [ "$color_prompt" = yes ]; then
-	prompt='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]'${USER:0:1}'@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+	prompt='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]'${USER:0:1}'@\h\[\033[00m\]:\[\033[01;34m\]$(echo $(dirname $(echo \w | sed "s;$HOME;~;"))/ |sed -e "s;\(/\.\?.\)[^/]*;\1;g" -e "s;/h/s;~;" -e "s;\./;;")\W\[\033[00m\]\$ '
+	#prompt='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]'${USER:0:1}'@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ ' # without dir shortening
 	PS1="$prompt"
 else
-	prompt='${debian_chroot:+($debian_chroot)}'${USER:0:1}'@\h:\w\$ '
+	prompt='${debian_chroot:+($debian_chroot)}'${USER:0:1}'@\h:$(echo $(dirname $(echo \w | sed "s;$HOME;~;"))/ |sed -e "s;\(/\.\?.\)[^/]*;\1;g" -e "s;/h/s;~;" -e "s;\./;;")\W\$ '
+	#prompt='${debian_chroot:+($debian_chroot)}'${USER:0:1}'@\h:\w\$ ' # without dir shortening
 	PS1="$prompt"
 fi
 
