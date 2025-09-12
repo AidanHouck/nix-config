@@ -37,6 +37,7 @@
     ripgrep
     tldr
     tree
+    edir
     bc
     screen
     dos2unix
