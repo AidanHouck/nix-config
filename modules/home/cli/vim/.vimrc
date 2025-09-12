@@ -1,5 +1,6 @@
 " Some values taken from defaults.vim
 set nocompatible " disable vi compatibility
+set autochdir " auto cd when editing file in different dir (:!exp .)
 set backspace=indent,eol,start " allow backspace over everything
 set display=truncate " truncate last line
 set nrformats-=octal " don't recognize octal number
