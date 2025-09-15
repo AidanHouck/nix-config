@@ -18,6 +18,14 @@ alias catb="bat"
 alias gistlist="gh gist list -L 9999"
 alias upper="tr '[:lower:]' '[:upper:]'"
 alias lower="tr '[:upper:]' '[:lower:]'"
+systemctl() {
+	# systemctl ps alias
+	if [[ $@ == "ps" ]]; then
+		command systemctl --type=service --state=running
+	else
+		command systemctl "$@"
+	fi
+}
 
 # Quick alias for ssh using old crypto
 alias ssha="\
