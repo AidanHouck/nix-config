@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 user="houck"
-ssh_dir="/mnt/o/Aidan/ssh.d/"
-log_dir="/mnt/o/Aidan/puttylogs/"
+ssh_dir="/mnt/o/aidan/ssh.d/"
+log_dir="/mnt/o/aidan/puttylogs/"
 
 connection_ip_regex='([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)'
 connection_host_regex='((?:[a-zA-Z0-9\-]+[.])*[a-zA-Z0-9]+[.](?:com|org))'
