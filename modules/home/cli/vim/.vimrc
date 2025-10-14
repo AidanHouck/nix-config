@@ -74,6 +74,19 @@ map <space> /
 " expand history
 set history=500
 
+" setup undo file dir
+if !isdirectory($HOME."/.config")
+    call mkdir($HOME."/.config", "", 0755)
+endif
+if !isdirectory($HOME."/.config/vim")
+	    call mkdir($HOME."/.config/vim", "", 0755)
+endif
+if !isdirectory($HOME."/.config/vim/undo-dir")
+	    call mkdir($HOME."/.config/vim/undo-dir", "", 0700)
+endif
+set undodir=~/.config/vim/undo-dir
+set undofile
+
 " enable mouse because i'm a weakling
 set mouse=a
 
