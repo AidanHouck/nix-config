@@ -54,16 +54,22 @@ if [ -n "$force_color_prompt" ]; then
 	fi
 fi
 
-prompt=
+# build the path command used in prompt
+prompt_path='$(pwd | sed'\
+' -e "s;$HOME;~;"'`#replace /home/user with ~`\
+' -e "s;\(.*\)\/.*;\1;"'`#change current working dir`\
+' -e "s;\/\(\.\?.\)[^/]*;/\1;g"'`#strip all but first char (keeping . for hidden dir)`\
+')/$( ( ! [ "$PWD" == "$HOME" ] && ! [ "$PWD" == "/" ] ) && basename "$PWD" )' # append working dir (if not / or $HOME)
+
+prompt_user="${USER:0:1}@\h"
+
 if [ "$color_prompt" = yes ]; then
-	prompt='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]'${USER:0:1}'@\h\[\033[00m\]:\[\033[01;34m\]$(echo $(dirname $(echo \w | sed "s;$HOME;~;"))/ |sed -e "s;\(/\.\?.\)[^/]*;\1;g" -e "s;/h/s;~;" -e "s;\./;;")\W\[\033[00m\]\$ '
-	#prompt='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]'${USER:0:1}'@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ ' # without dir shortening
-	PS1="$prompt"
-else
-	prompt='${debian_chroot:+($debian_chroot)}'${USER:0:1}'@\h:$(echo $(dirname $(echo \w | sed "s;$HOME;~;"))/ |sed -e "s;\(/\.\?.\)[^/]*;\1;g" -e "s;/h/s;~;" -e "s;\./;;")\W\$ '
-	#prompt='${debian_chroot:+($debian_chroot)}'${USER:0:1}'@\h:\w\$ ' # without dir shortening
-	PS1="$prompt"
+	prompt_user="\[\033[01;32m\]${prompt_user}\[\033[00m\]"
+	prompt_path="\[\033[01;34m\]${prompt_path}\[\033[00m\]"
 fi
+
+prompt="${debian_chroot:+($debian_chroot)}${prompt_user}:${prompt_path}$ "
+PS1="$prompt"
 
 unset color_prompt force_color_prompt
 
