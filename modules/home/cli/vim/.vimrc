@@ -37,6 +37,9 @@ endif " has("autocmd")
 nnoremap <F5> :!"%:p"<Enter>
 command! -nargs=* F5 :!"%:p" <args>
 
+" use Q to auto-replay previously used macro
+nnoremap Q @@
+
 " Load file when running commands via :!cmd
 let $BASH_ENV="~/.config/vim/vim_bash"
 
