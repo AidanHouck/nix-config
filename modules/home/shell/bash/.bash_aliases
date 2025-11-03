@@ -10,6 +10,7 @@ alias mkdir="mkdir -p"
 #alias tree='tree -a'
 alias ll="ls -lah"
 alias lt="ls -laht"
+alias grep="grep -i"
 
 # External programs
 alias sc='shellcheck'
