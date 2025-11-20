@@ -31,14 +31,17 @@ in {
   config = mkIf cfg.enable {
     programs.git = {
       enable = true;
-      userName = cfg.displayName;
-      userEmail = cfg.email;
-      aliases = {
-        undo = "reset HEAD~";
-        last = "log -1 HEAD";
-      };
+      settings = {
+        user = {
+          name = cfg.displayName;
+          email = cfg.email;
+        };
 
-      extraConfig = {
+        aliases = {
+          undo = "reset HEAD~";
+          last = "log -1 HEAD";
+        };
+
         help = {
           autocorrect = "prompt";
         };
