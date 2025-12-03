@@ -74,6 +74,8 @@ map <space> /
 " misc options
 """"""""""""""""""""
 
+set tabstop=3
+
 " expand history
 set history=500
 
