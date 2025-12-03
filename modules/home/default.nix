@@ -38,6 +38,7 @@ in {
           discord
           bitwarden-desktop
 
+          librewolf
           libreoffice-qt-still
           hunspell # spellcheck
           hunspellDicts.en_US
