@@ -1,6 +1,6 @@
 /* make vertical tabs smaller */
 :root {
-	--tab-block-margin: 0 !important;
+	--tab-block-margin: 0px !important;
 }
 
 #tabbrowser-tabs[orient="vertical"] {
