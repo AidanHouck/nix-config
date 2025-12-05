@@ -1,0 +1,10 @@
+/* make vertical tabs smaller */
+:root {
+	--tab-block-margin: 0 !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] {
+  & .tabbrowser-tab {
+    padding-block: 0 !important;
+  }
+}
