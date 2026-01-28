@@ -9,12 +9,13 @@ menu () {
 
 	finish="-1"
 	while [ "$finish" = "-1" ]; do
-		echo -e "1: Retry\n2: Copy output to clipboard\n3: Exit"
+		echo -e "1: Retry\n2: Copy output to clipboard\n3: Edit ~/.ssh/known_hosts\n4: Exit"
 		read -rp "Selection: " choice
 		case "$choice" in
 		  1|r ) ssh;;
 		  2|c ) copy;;
-		  ""|3|q ) finish=1; exit;;
+		  3|s|h ) hosts;;
+		  ""|4|q ) finish=1; exit;;
 		esac
 	done
 }
@@ -28,6 +29,10 @@ ssh () {
 copy () {
 	tmux capture-pane -pS- | clip.exe
 	echo Pane history copied
+}
+
+hosts () {
+	vim ~/.ssh/known_hosts
 }
 
 ssh
