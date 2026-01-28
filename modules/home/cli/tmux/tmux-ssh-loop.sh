@@ -7,13 +7,14 @@ temp="$(mktemp)"
 
 menu () {
 	echo "Connect has terminated. Select an option to continue."
+	rm -f "$temp"
 
 	finish="-1"
 	while [ "$finish" = "-1" ]; do
 		echo -e "1: Retry\n2: Copy output to clipboard\n3: vim ~/.ssh/known_hosts\n4: Exit"
 		read -rp "Selection: " choice
 		case "$choice" in
-		  1|r ) rm -f "$temp"; ssh;;
+		  1|r ) ssh;;
 		  2|c ) copy;;
 		  3|v ) hosts;;
 		  ""|4|q ) finish=1; exit;;
