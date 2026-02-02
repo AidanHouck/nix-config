@@ -17,10 +17,25 @@ if [[ ! $result ]]; then
 	exit
 fi
 
+# Only prompt for current pane if a single switch was selected
+message="\n\nSelect SSH command location:\n1: New Window (default)\n2: Split current window"
+
 multiple_results=
 if [[ $(echo "$result" | wc -l) -gt 1 ]]; then
 	multiple_results=1
+	printf "%b" "Connecting to the following switches:\n\n$result"
+else
+	message="$message\n3: Current pane"
+	printf "%b" "Connecting to the following switch: \n\n$result"
 fi
+
+echo -e "$message"
+read -rp "> " choice
+case "$choice" in
+  1|"" ) true;;
+  2 ) CURRENT_WINDOW=1;;
+  3 ) if [[ ! $multiple_results ]]; then CURRENT_PANE=1; fi;;
+esac
 
 i=0
 while IFS= read -r line; do
@@ -37,9 +52,21 @@ while IFS= read -r line; do
 	mkdir -p "${log_dir}${district}"
 
 	if [[ $i -eq 0 ]]; then
-		# First run, create window
-		tmux new-window -n "$hostname" \
-			"~/.config/tmux/tmux-ssh-loop.sh '$line' '$logname' '$ssh_dir' '$user'"
+		# First run
+
+		if [[ $CURRENT_WINDOW ]]; then
+			# If requested, split the current window
+			tmux split-window \
+				"~/.config/tmux/tmux-ssh-loop.sh '$line' '$logname' '$ssh_dir' '$user'"
+		elif [[ $CURRENT_PANE ]]; then
+			# Else, send-keys to current pane
+			tmux send-keys C-z \
+				"~/.config/tmux/tmux-ssh-loop.sh '$line' '$logname' '$ssh_dir' '$user'" Enter
+		else
+			# Otherwise, create a new window
+			tmux new-window -n "$hostname" \
+				"~/.config/tmux/tmux-ssh-loop.sh '$line' '$logname' '$ssh_dir' '$user'"
+		fi
 	else
 		# Subsequent run, split window
 		tmux split-window \
