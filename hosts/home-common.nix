@@ -52,6 +52,7 @@
     # Quality of Life
     fzf
     shellcheck
+    qalculate-gtk
 
     # Networking Utils
     inetutils # telnet
