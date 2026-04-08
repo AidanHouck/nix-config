@@ -11,13 +11,18 @@ menu () {
 
 	finish="-1"
 	while [ "$finish" = "-1" ]; do
-		echo -e "1: Retry\n2: Copy output to clipboard\n3: vim ~/.ssh/known_hosts\n4: Exit"
+		echo -e "1: [r]etry
+2: [c]opy output to clipboard
+3: [v]im ~/.ssh/known_hosts
+4: [e]dit $result
+5: [Q]uit"
 		read -rp "Selection: " choice
 		case "$choice" in
-		  1|r ) ssh;;
-		  2|c ) copy;;
-		  3|v ) hosts;;
-		  ""|4|q ) finish=1; exit;;
+		  1|r|R ) ssh;;
+		  2|c|C ) copy;;
+		  3|v|V ) hosts;;
+		  4|e|E ) edit;;
+		  5|q|Q|"" ) finish=1; exit;;
 		esac
 	done
 }
@@ -36,6 +41,10 @@ copy () {
 hosts () {
 	line=$(cat "$temp" | grep -Eo 'known_hosts:[0-9]+' | sed 's/known_hosts://')
 	vim "+$line" ~/.ssh/known_hosts
+}
+
+edit () {
+	vim "$ssh_dir$result"
 }
 
 ssh
