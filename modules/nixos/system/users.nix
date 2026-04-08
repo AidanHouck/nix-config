@@ -42,7 +42,7 @@ in {
         openssh.authorizedKeys.keys = let
           authorizedKeys = pkgs.fetchurl {
             url = "https://github.com/${cfg.githubAccount}.keys";
-            sha256 = "sha256-z7Tuzn5jgYU9pEKZKhfkBqLj2ImY3JyLrH6uKdvicLg=";
+            sha256 = "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=";
           };
         in
           pkgs.lib.splitString "\n" (builtins.readFile authorizedKeys);
