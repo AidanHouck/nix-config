@@ -11,11 +11,11 @@ menu () {
 
 	finish="-1"
 	while [ "$finish" = "-1" ]; do
-		echo -e "1: \e[4mR\e[0metry
-2: \e[4mC\e[0mopy output to clipboard
-3: \e[4mv\e[0mim ~/.ssh/known_hosts
-4: \e[4mE\e[0mdit $result
-5: \e[4mQ\e[0muit"
+		echo -e "1: \e[1;4mR\e[0metry
+2: \e[1;4mC\e[0mopy output to clipboard
+3: \e[1;4mv\e[0mim ~/.ssh/known_hosts
+4: \e[1;4mE\e[0mdit $result
+5: \e[1;4mQ\e[0muit"
 		read -rp "Selection: " choice
 		case "$choice" in
 		  1|r|R ) ssh;;
