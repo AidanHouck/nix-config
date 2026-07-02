@@ -45,10 +45,6 @@ in {
           HostName secure-note.mveca.org
           User houck.admin
 
-      Host *
-          ControlMaster auto
-          ControlPath ~/.ssh/sockets/%r@%h:%p
-          ControlPersist 10m
     '';
 
     system.stateVersion = "24.05";
