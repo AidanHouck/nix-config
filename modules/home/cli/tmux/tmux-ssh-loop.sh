@@ -44,7 +44,8 @@ hosts () {
 }
 
 edit () {
-	vim "$ssh_dir$result"
+	printf "%s\n%s\n%s\n" '-oKexAlgorithms=' '-oHostKeyAlgorithms=' '-oCiphers='
+	tmux split-window vim "$ssh_dir$result"
 }
 
 ssh
