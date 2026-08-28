@@ -60,7 +60,9 @@ in {
           ffmpeg
           wine
           winetricks
+          protontricks
           prismlauncher # minecraft client
+          jdk21 # java for bl tps patch
           clonehero # plastic guitar game
           weechat # irc client
           lrcget # mass-download lyrics for music
