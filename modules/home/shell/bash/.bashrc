@@ -91,6 +91,11 @@ if [[ $HOSTNAME =~ kube-.* ]]; then
 	export PATH="/var/lib/rancher/rke2/bin:$PATH"
 fi
 
+# If on home machine add script dir to path
+if [[ $HOSTNAME == desktop ]]; then
+	export PATH="/home/houck/src/scripts/utility:$PATH"
+fi
+
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
