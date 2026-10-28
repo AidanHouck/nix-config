@@ -39,7 +39,7 @@ in {
           bitwarden-desktop
 
           librewolf
-          libreoffice-qt-still
+          libreoffice-qt
           hunspell # spellcheck
           hunspellDicts.en_US
 
