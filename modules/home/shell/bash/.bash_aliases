@@ -19,6 +19,7 @@ alias catb="bat"
 alias gistlist="gh gist list -L 9999"
 alias upper="tr '[:lower:]' '[:upper:]'"
 alias lower="tr '[:upper:]' '[:lower:]'"
+alias digs="dig +short"
 systemctl() {
 	# systemctl ps alias
 	if [[ $@ == "ps" ]]; then
