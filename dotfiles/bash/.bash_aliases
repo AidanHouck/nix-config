@@ -12,6 +12,9 @@ alias ll="ls -lah"
 alias lt="ls -laht"
 alias grep="grep -i"
 
+alias stow="stow -d ~/src/nix-config/dotfiles -t ~"
+alias unstow="stow -D"
+
 # External programs
 alias sc='shellcheck'
 alias bat="bat -n"
