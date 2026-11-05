@@ -18,6 +18,22 @@ Basic dotfiles can be installed on any non-NixOS machine via the following:
 bash <(curl -s https://raw.githubusercontent.com/AidanHouck/nix-config/refs/heads/main/scripts/nixless-install.sh)
 ```
 
+## Stow Dotfiles
+Dotfiles are symlink'd in `./dotfiles` to be used with stow. E.G.
+```bash
+stow vim
+stow -D vim
+```
+
+To quickstart you will need to use `-t ~` to specify the destination as `dotfiles` does not live in `~` currently.
+```bash
+cd dotfiles
+stow -t ~ bash
+stow -t ~ vim
+stow -t ~ tmux
+bash
+```
+
 ## New Machine Setup
 
 0. If live booting on USB, setup partitioning and finish install.
