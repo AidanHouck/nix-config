@@ -1,1 +1,2 @@
 **/*.swp
+dotfiles/vim/.config/vim/undo-dir
