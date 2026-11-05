@@ -1,3 +1,6 @@
+# Ref:
+# https://gist.github.com/anonymous/a9055e30f97bd19645c2
+
 # Interactive/verbose file operations
 alias rm='rm -i -v'
 alias mv='mv -i -v'
