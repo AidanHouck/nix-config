@@ -34,6 +34,12 @@ stow -t ~ tmux
 bash
 ```
 
+Various links for setup inspiration:
+https://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html
+https://github.com/Krowemoh/dotfiles/tree/main
+https://github.com/ayekat/localdir/tree/master
+https://github.com/w0ng/dotfiles
+
 ## New Machine Setup
 
 0. If live booting on USB, setup partitioning and finish install.
