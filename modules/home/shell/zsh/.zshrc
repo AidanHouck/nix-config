@@ -95,7 +95,7 @@ bB?s/%s. .?e(END) ?x- Next\: %x.:?pB%pB\%..%t'
 ###########
 # History #
 ###########
-HISTFILE=~/.zsh_history
+HISTFILE=$ZDOTDIR/.zsh_history
 HISTSIZE=10000 # Max commands in history file
 SAVEHIST=10000 # Max bytes of history file
 setopt SHARE_HISTORY # Share history in all terminals
@@ -107,5 +107,5 @@ hgrep () {fc -Dlim "*$@*" 1}
 ###########
 # Aliases #
 ###########
-source ~/.zsh_aliases
+source $ZDOTDIR/.zsh_aliases
 
