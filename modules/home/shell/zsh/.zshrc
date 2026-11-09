@@ -45,8 +45,10 @@ bB?s/%s. .?e(END) ?x- Next\: %x.:?pB%pB\%..%t'
 ###########
 # History #
 ###########
-setopt INC_APPEND_HISTORY # Append instead of replacing history file
-setopt EXTENDED_HISTORY # Save command timestamps
+HISTFILE=~/.zsh_history
+HISTSIZE=10000 # Max commands in history file
+SAVEHIST=10000 # Max bytes of history file
+setopt SHARE_HISTORY # Share history in all terminals
 setopt HIST_IGNORE_SPACE # Don't log commands with leading space
 alias history='fc -Dli 1'
 hgrep () {fc -Dlim "*$@*" 1}
