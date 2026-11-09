@@ -39,6 +39,7 @@ ssh -oPreferredAuthentications=keyboard-interactive \
 
 # Stow dotfile management
 alias stow="stow -d ~/src/nix-config/dotfiles -t ~"
+alias restow="stow -R"
 alias unstow="stow -D"
 
 # Config dir shortcut
