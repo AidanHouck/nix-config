@@ -5,10 +5,23 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select # menu style tab completion
 
-# This needs to be called BEFORE fzf initialization
+
+################
+# ZLE settings #
+################
+# Vim mode, this needs to be called BEFORE fzf initialization
 #bindkey -v # vim mode
 #export KEYTIMEOUT=5 # lower <ESC> default timeout
 
+# Make ^D work when line is not blank
+exit_zsh() { exit }
+zle -N exit_zsh
+bindkey '^D' exit_zsh
+
+
+############
+# fzf init #
+############
 if which fzf 1>/dev/null 2>&1; then
 	# Enable fzf autocompletion and keybinds
 	export FZF_COMPLETION_TRIGGER='**'
