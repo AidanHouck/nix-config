@@ -41,3 +41,13 @@ fi
 export MANLESS='$MAN_PN ?f%f .?n?m(%T %i of %m) ..?ltlines %lt-%lb?L/%L. :byte %
 bB?s/%s. .?e(END) ?x- Next\: %x.:?pB%pB\%..%t'
 
+
+###########
+# History #
+###########
+setopt INC_APPEND_HISTORY # Append instead of replacing history file
+setopt EXTENDED_HISTORY # Save command timestamps
+setopt HIST_IGNORE_SPACE # Don't log commands with leading space
+alias history='fc -Dli 1'
+hgrep () {fc -Dlim "*$@*" 1}
+
