@@ -27,6 +27,9 @@ alias cat="bat"
 alias digs="dig +short"
 alias cls="clear"
 
+# Allow sudo to use normal dotfiles when root
+alias sudo='sudo -Es'
+
 # Quick alias for ssh using old crypto
 alias ssha="\
 ssh -oPreferredAuthentications=keyboard-interactive \
