@@ -53,3 +53,9 @@ setopt HIST_IGNORE_SPACE # Don't log commands with leading space
 alias history='fc -Dli 1'
 hgrep () {fc -Dlim "*$@*" 1}
 
+
+###########
+# Aliases #
+###########
+source ~/.zsh_aliases
+
