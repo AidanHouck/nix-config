@@ -14,7 +14,11 @@ fi
 #################
 # Custom prompt #
 #################
-PROMPT='%F{green}'${USER::1}'@%m%f:%F{cyan}%2~%f%# '
+if [[ $USER = root ]]; then
+	PROMPT='%F{red}%n@%m%f:%F{cyan}%2~%f%# '
+else
+	PROMPT='%F{green}'${USER::1}'@%m%f:%F{cyan}%2~%f%# '
+fi
 RPROMPT='[%F{yellow}%?%f]'
 
 
