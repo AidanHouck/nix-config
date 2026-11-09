@@ -10,8 +10,6 @@ alias mkdir="mkdir -p"
 alias ll="ls -lah"
 alias grep="grep -i"
 
-alias nixg="cd ~/src/nix-config"
-
 # Add aliases for .., ..., .... to go up
 # the corresponding number of directories
 alias_str=".."
@@ -39,6 +37,9 @@ ssh -oPreferredAuthentications=keyboard-interactive \
 # Stow dotfile management
 alias stow="stow -d ~/src/nix-config/dotfiles -t ~"
 alias unstow="stow -D"
+
+# Config dir shortcut
+alias nixg="cd ~/src/nix-config"
 
 # Git operations
 alias gad="git add"
