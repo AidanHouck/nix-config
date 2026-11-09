@@ -4,10 +4,15 @@
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select # menu style tab completion
+
+# This needs to be called BEFORE fzf initialization
+#bindkey -v # vim mode
+#export KEYTIMEOUT=5 # lower <ESC> default timeout
+
 if which fzf 1>/dev/null 2>&1; then
 	# Enable fzf autocompletion and keybinds
 	export FZF_COMPLETION_TRIGGER='**'
-	eval "$(fzf --zsh)"
+	source "$(fzf --zsh)"
 fi
 
 
@@ -21,12 +26,6 @@ else
 fi
 RPROMPT='[%F{yellow}%?%f]'
 
-
-################
-# ZLE settings #
-################
-bindkey -v # vim mode
-export KEYTIMEOUT=5 # lower <ESC> default timeout
 
 #########################
 # Environment variables #
