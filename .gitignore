@@ -1,2 +1,4 @@
 **/*.swp
 dotfiles/vim/.config/vim/undo-dir
+dotfiles/zsh/.config/zsh/.zcompdump
+dotfiles/zsh/.config/zsh/.zsh_history
