@@ -73,6 +73,9 @@ bindsym $mod+bar split h
 # vertical
 bindsym $mod+minus split v
 
+# Minimal title bar in split view
+default_border pixel
+
 # enter fullscreen mode for the focused container
 bindsym $mod+z fullscreen toggle
 
