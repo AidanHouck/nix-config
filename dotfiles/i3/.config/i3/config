@@ -160,7 +160,8 @@ bindsym $mod+m mode "resize"
 
 # Start i3bar to display a workspace bar
 bar {
-	status_command i3status
+	status_command i3status --config $XDG_CONFIG_HOME/i3status/i3status.conf
+	#status_command i3status --config ~/.config/i3status/i3status.conf
 }
 
 # Open terminal on startup
