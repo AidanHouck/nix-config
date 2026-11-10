@@ -69,9 +69,9 @@ bindsym $mod+Shift+Right move right
 
 # toggle which orientation new windows are split from
 # horizontal
-bindsym $mod+minus split h
+bindsym $mod+bar split h
 # vertical
-bindsym $mod+bar split v
+bindsym $mod+minus split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+z fullscreen toggle
