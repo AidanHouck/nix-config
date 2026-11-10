@@ -18,6 +18,12 @@ exit_zsh() { exit }
 zle -N exit_zsh
 bindkey '^D' exit_zsh
 
+# Setup inline command editing as an alternative
+# to `fc` for the previous command
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^E' edit-command-line
+
 
 ############
 # fzf init #
