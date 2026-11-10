@@ -1,0 +1,19 @@
+[aliases]
+	undo = "reset HEAD~"
+
+[credential "https://gist.github.com"]
+	helper = "/usr/bin/gh"
+
+[credential "https://github.com"]
+	helper = "/usr/bin/gh"
+
+[help]
+	autocorrect = "prompt"
+
+[init]
+	defaultBranch = "main"
+
+[user]
+	email = "AidanHouck@users.noreply.github.com"
+	name = "Aidan Houck"
+
