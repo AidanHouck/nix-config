@@ -29,6 +29,7 @@ stow -t ~ git
 stow -t ~ tmux
 stow -t ~ fastfetch
 stow -t ~ i3
+stow -t ~ alacritty
 bash
 ```
 
