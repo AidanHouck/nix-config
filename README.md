@@ -19,18 +19,16 @@ bash <(curl -s https://raw.githubusercontent.com/AidanHouck/nix-config/refs/head
 ```
 
 ## Stow Dotfiles
-Dotfiles are symlink'd in `./dotfiles` to be used with stow. E.G.
-```bash
-stow vim
-stow -D vim
-```
-
-To quickstart you will need to use `-t ~` to specify the destination as `dotfiles` does not live in `~` currently.
+Dotfiles are symlink'd in `./dotfiles` to be used with stow. To quickstart you will need to use `-t ~` to specify the destination as `dotfiles` does not live in `~` currently.
 ```bash
 cd dotfiles
 stow -t ~ bash
+stow -t ~ zsh
 stow -t ~ vim
+stow -t ~ git
 stow -t ~ tmux
+stow -t ~ fastfetch
+stow -t ~ i3
 bash
 ```
 
