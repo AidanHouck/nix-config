@@ -6,6 +6,7 @@ alias ln='ln -i -v'
 
 # Sane defaults
 alias ls="ls --color=auto"
+alias diff="diff --color=auto"
 alias mkdir="mkdir -p"
 alias ll="ls -lah"
 alias grep="grep -i"
