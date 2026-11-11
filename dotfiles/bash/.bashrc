@@ -6,7 +6,7 @@ esac
 
 if which fzf 1>/dev/null 2>&1; then
 	# Enable fzf autocompletion and keybinds
-	export FZF_COMPLETION_TRIGGER='*'
+	export FZF_COMPLETION_TRIGGER='`'
 	eval "$(fzf --bash)"
 fi
 
