@@ -12,6 +12,7 @@ zstyle ':completion:*' menu select # menu style tab completion
 # Vim mode, this needs to be called BEFORE fzf initialization
 #bindkey -v # vim mode
 #export KEYTIMEOUT=5 # lower <ESC> default timeout
+bindkey -e
 
 # Make ^D work when line is not blank
 exit_zsh() { exit }
