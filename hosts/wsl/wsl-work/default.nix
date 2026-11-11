@@ -45,7 +45,25 @@ in {
           HostName secure-note.mveca.org
           User houck.admin
 
+      # Setup port forward for clipboard access
+      Host mv-noc-0277
+          HostName 10.3.88.44
+          RemoteForward 127.0.0.1:3333 127.0.0.1:3333
+
     '';
+
+    systemd.services.reverse-clip = {
+        wantedBy = [ "multi-user.target" ];
+        path = [
+          pkgs.bash
+          pkgs.netcat
+        ];
+        script = "${./../../../scripts/reverse-clip.sh}";
+        serviceConfig = {
+            Restart = "always";
+            RestartSec = 0;
+        };
+    };
 
     system.stateVersion = "24.05";
   };

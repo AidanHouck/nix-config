@@ -82,6 +82,11 @@ if [[ $(grep -i Microsoft /proc/version) ]]; then
 	alias clip="tee >(/mnt/c/Windows/system32/clip.exe)" # example usage: `echo hi | clip`
 fi
 
+# If running on work Arch machine
+if [[ $(grep -i mv-noc-0277 /etc/hostname) ]]; then
+	alias clip="nc localhost 3333 -q0" # example usage: `echo hi | clip`
+fi
+
 # Hot reloading of dotfiles
 alias zshrc="source ~/.zshrc"
 
