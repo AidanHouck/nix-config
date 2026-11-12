@@ -19,11 +19,15 @@ exit_zsh() { exit }
 zle -N exit_zsh
 bindkey '^D' exit_zsh
 
+# Make ctrl+arrows work as expected
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 # Setup inline command editing as an alternative
 # to `fc` for the previous command
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey '^E' edit-command-line
+bindkey '^[^E' edit-command-line #ctrl+alt+e
 
 
 ############
