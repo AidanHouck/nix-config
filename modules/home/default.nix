@@ -47,7 +47,6 @@ in {
           mpv # media player
           koreader # ebook reader
           pinta # MS paint replacement
-          anki # flashcard software
 
           prusa-slicer # gcode slicer
         ];
