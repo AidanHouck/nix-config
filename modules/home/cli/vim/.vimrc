@@ -60,7 +60,7 @@ vnoremap <Right> <Nop>
 vnoremap <Up> <Nop>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo
- cmap w!! w !sudo tee > /dev/null %
+cmap w!! w !sudo tee > /dev/null %
 
 " ; = :
 "nnoremap ; :
@@ -76,7 +76,6 @@ map <space> /
 """"""""""""""""""""
 " misc options
 """"""""""""""""""""
-
 set tabstop=3
 
 " expand history
@@ -148,9 +147,22 @@ set background=dark
 color desert
 highlight NonText ctermbg=NONE " disable bg square on eol dots
 
-" WSL yank support
-let s:clip = '/mnt/c/Windows/System32/clip.exe'
-if executable(s:clip)
+" Setup clipboard forwarding
+if hostname() == 'wsl-work'
+    if executable('clip.exe')
+        let s:clip = 'clip.exe'
+    endif
+elseif hostname() == 'mv-noc-0277'
+    if executable('nc')
+        let s:clip = 'nc localhost 3333 -q0'
+    endif
+endif
+
+" TODO syntax highlighting in all file types
+" https://vi.stackexchange.com/a/19043
+autocmd Syntax * syntax keyword myTodo TODO containedin=ALL | highlight def link myTodo TODO
+
+if !empty(s:clip)
     augroup WSLYank
         autocmd!
         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
