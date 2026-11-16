@@ -158,6 +158,10 @@ elseif hostname() == 'mv-noc-0277'
     endif
 endif
 
+" TODO syntax highlighting in all file types
+" https://vi.stackexchange.com/a/19043
+autocmd Syntax * syntax keyword myTodo TODO containedin=ALL | highlight def link myTodo TODO
+
 if !empty(s:clip)
     augroup WSLYank
         autocmd!
